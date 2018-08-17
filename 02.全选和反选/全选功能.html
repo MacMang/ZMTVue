@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li>
+                <input type="checkbox" v-model="allChecked">全选
+                <input type="checkbox" v-model="reverseCheck">反选
+            </li>
+            <li v-for="(item,index) in dataSource" :key="index">
+                <input type="checkbox" v-model="checkedArr" @change="selecte" :value="item">{{item}}
+            </li>
+        </ul>
+        {{checkedArr}}
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            dataSource: ["篮球","足球","排球","乒乓球",'羽毛球',"桌球"],
+            allChecked: false,
+            checkedArr: [],
+            reverseCheck: false
+        },
+        methods: {
+            selecte(){
+                //选中选项的时候,取消反选按钮的选中状态
+                this.reverseCheck = false;
+            }
+        },
+        watch: {
+            allChecked(value){
+                if(value){
+                    this.reverseCheck = false;
+                    this.checkedArr = this.dataSource;
+                }else{
+                    if(this.checkedArr.length == this.dataSource.length){
+                        this.checkedArr = [];
+                    }
+                }
+            },
+            checkedArr(newValue){
+                if(newValue.length === this.dataSource.length){
+                     this.allChecked = true;
+                }else{
+                    this.allChecked = false;
+                }
+            },
+            reverseCheck(newValue){
+                console.log(newValue);
+                /*
+                    如果反选为true,首先要查看当前选中列表是否空或者是否为全选
+                    如果为
+                */
+                if(newValue){
+                    // 如果为全选,则将数组清空
+                    if(this.allChecked){
+                        this.checkedArr = [];
+                    }
+                    //如果选中的数组为空,则将它全部选中
+                    if(this.checkedArr.length == 0){
+                        this.allChecked = true;
+                    }else{
+                        // 如果数组不为空或者不为全选,则反选
+                        //求原始数组和现有的数组的差集就是反选的结果了
+                        var checkedSet = new Set(this.checkedArr);
+                        this.checkedArr = Array.from(new Set(this.dataSource.filter(x => !checkedSet.has(x))));
+
+                    }
+                }
+            }
+        }
+    })
+</script>

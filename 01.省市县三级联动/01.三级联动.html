@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <label for="province">省</label>
+        <select id="province" v-model="province">
+            <option v-for="(item,key) in response">{{item.name}}</option>
+        </select>
+        <label for="city">市</label>
+        <select id="city" v-model="cityname">
+            <option v-for="(item,key) in citys">
+                {{item.name}}
+            </option>
+        </select>
+        <label for="areas">区</label>
+        <select id="areas" v-model="areaName">
+            <option v-for="(item,key) in areas">
+                {{item}}
+            </option>
+        </select>
+    </div>
+</body>
+</html>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            response: [], //省份列表
+            citys: [], //城市列表
+            province: '北京市', //省份名称
+            cityname: '北京市',//城市名称
+            areas: [], //区域列表
+            areaName: '东城区'//区域名称
+        },
+        methods: {
+            loadData(){
+                axios.get('http://localhost:3000/citys')
+                .then((response)=>{
+                    // 获取到数据
+                    this.response = response.data;
+                    console.log(response);
+                    // 获取城市初始数据
+                    this.citys = this.response[0].city;
+                    // 根据初始城市获取初始区域
+                    this.areas = this.citys[0].area;
+                })
+            }
+        },
+        created(){
+            this.loadData();
+        },
+        watch: {
+            // 监听省份的值的变化
+            province(newValue){
+                // 当省份的值发生变化的时候,循环省份的数据
+                for(var i = this.response.length-1;i>=0;i--){
+                    //当获取到发生变化的值和省份数据的值相同的部分,就将该省份的数据取出
+                    if(this.response[i].name===newValue){
+                        // 取出该省份的城市列表
+                        this.citys = this.response[i].city;
+                        // 根据取到的城市列表,设置该城市的默认区域
+                        this.cityname = this.citys[0].name;
+                        return;
+                    }
+                }
+            },
+            cityname(newCity){
+                console.log("我是一定会被触发的么");
+                for(var i=this.citys.length-1;i>=0;i--){
+                    // 根据选中的城市名称,和城市列表进行比对
+                    if(this.citys[i].name === newCity){
+                        // 获取该城市的区域列表
+                        this.areas = this.citys[i].area;
+                        // 设置该城市的默认区域
+                        this.areaName = this.areas[0];
+                        return;
+                    }
+                }
+            }
+        }
+    })
+</script>
