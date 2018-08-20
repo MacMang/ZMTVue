@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font: 12px/1.5 arial,\5b8b\4f53;
+        }
+        #app {
+            border: #c9c9c9 1px solid;
+            padding-top: 10px;
+            width: 1029px;
+            margin: 0 auto 10px auto;
+        }
+        .ssqContainer {
+            width: 100%;
+        }
+        .dataTable {
+            width: 100%;
+            text-align: center;
+            background: #f7f7f7;
+        }
+        .dataTable  td {
+            height: 22px;
+            background-color: #f7f7f7;
+            white-space: nowrap;
+            border: 1px solid #fff;
+            text-align:center;
+        }
+        .dataTable .ball_red,.ball_blue {
+            color: #fff;
+            background-repeat: no-repeat;
+            background-image: url(./ball18px.png?2015);
+            font-family: verdana;
+        }
+        .ball_red {
+            background-position: center -86px;
+            font-family: verdana;
+        }
+        .ball_blue {
+            background-position: center -65px;
+        }
+    </style>
+    
+</head>
+<body>
+    <div id="app">
+        <div class="ssqContainer">
+            <table class="dataTable" ref="dataTable">
+                <tbody>
+                    <tr style="background-color: rgb(255, 233, 216)">
+                        <th style="width:70px">旗号</th>
+                        <!-- 
+                            由于红球和蓝球是两个不同的区域
+                            红球有33个,从01-33
+                            蓝球有16个,从01-16
+
+                            遍历红球的编号,从01到33,但是由于
+                            循环的时候 01会被直接当做1看待,所以遍历出来的数据需要处理
+                            小于10 的数字需要在前面加一个字符串'0
+                            大于等于10默认显示即可
+                            
+                            v-for="(item,key) in 33"
+                            该循环的实际意思是: 从 1到33的数组中,遍历数据
+                            所以item的起始值应该是1,
+                            key才是从0开始
+                         -->
+                        <th v-for="(item,key) in 33">
+                                {{item<10?'0'+item:item}}
+                        </th>
+                        <th v-for="item in 16">
+                                {{item<10?'0'+item:item}}
+                        </th>
+                    </tr>
+                    <!-- 
+                       遍历从服务器中获取回来的数据, 记住一般的v-for都要绑定 key属性
+                       以便vue编译器处理该标签
+
+                     -->
+                    <tr v-for="(item,key) in result" :key="item.period">
+                        <!-- 遍历的是 开奖的期数 -->
+                        <td style="width:70px">{{item.period}}</td>
+                        <!-- 
+                            遍历遗失号码: 从上一次开出开始到下一次开出之间所未开中的次数
+                            class的绑定:
+                                :class="general>0?'general':index<33?'ball_red':'ball_blue'"
+                                由于红区和篮球区域中奖的号码的背景图是不一样的,
+                                因此要给红区和篮球中奖号码设置不同的背景图片,也就是
+                                设置不同的类名.
+                                当general>0的时候,代表没有中奖,就用general作该标签的className
+                                index<33?'ball_red':'ball_blue'
+                                当general<0的时候,需要判断是红球还是篮球
+                                index<33的时候是红球,设置className为ball_red;
+                                index>33的时候是篮球,设置className为ball_blue
+                            
+                            ref:被用来给元素或子组件注册引用信息。引用信息将会注册在父组件的 $refs 对象上。
+                            如果在普通的 DOM 元素上使用，引用指向的就是 DOM 元素；如果用在子组件上，
+                         -->
+                        <td v-for="(general,index) in item.missNumber.general"
+                            :class="general>0?'general':index<33?'ball_red':'ball_blue'"
+                            :ref = "general>0?{}:index<33?'ball_red':'ball_blue'"
+                        >
+                            <!-- 
+                                当遗失次数为0或者-1或者更少的情况,表示该号码在当期是
+                                被开出的号码
+                                如果遗失次数大于0的,代表在当期未中该号.就显示遗失次数
+                                当general不大于0的时候,在当期已经中奖,然后显示中奖的号码
+                                中奖号码就是item.missNumber.general的元素对应的下标+1 就是该中奖号码
+                                另外由于无论是篮球还是红球,小于10的都必须加上0字符串作为前缀
+                                 红球区域中数小于10的 加字符串0
+                                 index<33?(index+1)>9?(index+1):'0'+(index+1)
+                                篮球区域中小于10的加字符串0
+                                (index-32)>9?(index-32):'0'+(index-32)
+                             -->
+                            {{
+                                general>0?general:
+                                index<33?(index+1)>9?(index+1):'0'+(index+1):
+                                (index-32)>9?(index-32):'0'+(index-32)
+                            }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <!-- 创建一个canvas画布,ref -->
+            <canvas id="canvas" ref="canvas"></canvas>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            result: [],
+            positionArray: [],//存储所有篮球所在的位置
+        },
+        methods: {
+            
+            // showWinNum(winNumArr,index,key){
+            //     if(this.num<6){
+            //         this.num++;
+            //     }else{
+            //         this.num = 0;
+            //     }
+            //     return winNumArr[this.num]<10?'0'+winNumArr[this.num]:winNumArr[this.num];
+            // },
+            // 封装请求数据的方法,以便重复利用
+            loadData(){
+                /*
+                    由于可能在回调函数中出现this应用被替换的问题
+                    也就说,在回调函数中有可能将this指向vue转成window
+                    因此为了避免出错,我们可以在回调函数之外,用一个变量
+                    来存储vue实例对象
+                */
+                var _that = this;
+                axios.get('http://localhost:3000/ssq')
+                .then(function(response){
+                    /*
+                        获取到服务器返回的数据,由于axios返回的数据都是包裹在一个对象,该对象有
+                        以下属性:
+                        config:
+                        data:{data: Array(200), hotCold: {…}, result: 100}
+                        headers:{content-type: "text/html; charset=utf-8"}
+                        request:XMLHttpRequest {onreadystatechange: ƒ, readyState: 4, timeout: 0, withCredentials: false, upload: XMLHttpRequestUpload, …}
+                        status:200
+                        statusText:"OK"
+                        __proto__:Object
+                        以上属性中,data是我们要获取的主要数据源,
+                        我们将从服务器中获取到的数据 reponse.data.data
+                        将该数据赋值给 vue实例对象中的result属性
+                        _that.result = response.data.data;
+                        
+                    */
+                    _that.result = response.data.data;
+                })
+            },
+            lineToAllBlue(){
+                /*
+                    this.$refs.canvas: 获取画布元素
+                    this.$refs.dataTable: 获取表格
+                */
+                var canvas = this.$refs.canvas;
+                var dataTable = this.$refs.dataTable;
+                // 设置画布的宽高等于dataTable的宽高
+                canvas.width = dataTable.clientWidth;
+                canvas.height = dataTable.clientHeight;
+                // 设置画布的定位
+                canvas.style.position = "absolute";
+                // 设置画布和顶部的距离,+19px的原因是首行的高度
+                canvas.style.top = dataTable.offsetTop+19+'px';
+                //创建2d绘图工具
+                var context = canvas.getContext('2d');
+                // 获取所有存储在this.$refs对象中的篮球选项
+                var blueBalls = this.$refs['ball_blue'];
+                // 遍历所有的蓝球选项
+                for(var i=0;i<blueBalls.length;i++){
+                    // 获取蓝球的坐标x轴和y轴
+                    var x = blueBalls[i].offsetLeft+15;
+                    var y = blueBalls[i].offsetTop-10;
+                    // 如果i=0,代表的是第一行,那就是作为线条的起点
+                    if(i==0){
+                        // 将笔触移动到该位置上
+                        context.moveTo(x,y);
+                    }else{
+                        // 开始对每一个篮球进行前后连线
+                        context.lineTo(x,y)
+                    }
+                }
+                // 设置连线的颜色
+                context.strokeStyle = "blue";
+                //设置线条的宽度
+                context.lineWidth = 1;
+                //绘制路径(显示线条)
+                context.stroke();
+            }
+        },
+        //在视图初始化的时候,触发获取数据的函数,初始化数据
+        /*
+            一般我们会在这个地方发起获取数据的请求
+        */
+        created(){
+            this.loadData();
+        },
+        updated(){
+            // 在界面的内容发生变化之后,再对篮球进行连线
+            // 否则篮球还没有出来,连线的函数就已经执行完
+            // 导致连线失败
+            this.lineToAllBlue();
+        }
+    })
+</script>
