@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+            <input type="text" v-model="searchValue">
+            <br>
+            <span v-search="{searchValue:searchValue,searchText:searchText}">{{searchText}}</span>
+    </div>    
+</body>
+</html>
+<script>
+    // 自定义一个指令来处理
+    Vue.directive('search',{
+        componentUpdated(el,binding){
+            console.log(binding.value);
+            var searchContent = binding.value.searchText;
+            var searchValue = binding.value.searchValue;
+            var index = searchContent.indexOf(searchValue);
+            var rs=searchContent;
+            //如果在子串中查找到对应的位置,
+            if(searchValue.length>0&&index!=-1){
+                var contents = searchContent.split(searchValue);
+                console.log(contents);
+                var insertHTML = `
+                <span style="color:red">${searchValue}</span>
+                `
+                rs = contents.join(insertHTML);
+                
+            }
+            el.innerHTML = rs
+        }
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            searchValue: '',
+            searchText: 'Hello World'
+        }
+    })
+</script>
