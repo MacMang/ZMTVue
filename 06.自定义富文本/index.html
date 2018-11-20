@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<script>
+    (function (context) {
+        var data = {};
+        var url = '//imgstat.baidu.com/17.gif';
+        var start = +new Date;
+        var createQuery = function (data) {
+            var ret = [];
+            for (var key in data) {
+                ret.push(key + '=' + data[key]);
+            }
+            return ret.join('&');
+        };
+
+        var _mergeCommPara = function (data) {
+            data.etype = 'speed';
+            data.page = 'result';
+            data.logid = "11309236653840735756";
+            data.sid = 'de7d2e78c6d9c702e5e3ba02639a9893a2f3af06';
+            data.wh = window.screen.width + 'x' + window.screen.height ;
+            data.sampid = '36';
+            data.app = 'searchresult';
+            data.spat = 0 + '-' + '';
+            data.protocol = window.location.protocol.replace(':', '');
+            if ('0' - 0) {
+                data.ishttps = '0';
+            }
+            
+            data.sync = "";
+            return data;
+        };
+        var _profiles = {
+            'slider': {
+                _url: '//imgstat.baidu.com/17.gif',
+                etype: 'slide'
+            }
+        };
+        var speed = {
+            set: function (key, value) {
+                if (key) {
+                    data[key] = value || 0;
+                }
+            },
+            get: function (key) {
+                return data[key] || ('start' === key && start);
+            },
+            mark: function (key, value, ts) {
+                if (undefined === value) {
+                    value = new Date - start;
+                }
+                if (true === ts) {
+                    value = value - start;
+                }
+                data[key] = value;
+            },
+            send: function (ext) {
+                if (ext) {
+                    for (var key in ext) {
+                        data[key] = ext[key];
+                    }
+                }
+                _mergeCommPara(data);
+                var queryString = createQuery(data);
+                new Image().src = url + '?' + queryString;
+            },
+            loadmark: function () {
+                value = new Date - start;
+
+                if (speed.firstScCount) {
+                    speed.firstScCount += 1;
+                }else{
+                    speed.firstScCount = 1;
+                }
+
+                data['firstSc'] = value;
+
+            },
+            log: function (profile, data) {
+                var queryString = createQuery(data);
+                var pf = _profiles[profile];
+                var a = [];
+
+                _mergeCommPara(data);
+                for (var p in pf) {
+                    if (p.indexOf('_') !== 0) {
+                        data[p] = pf[p];
+                    }
+
+                }
+                for (var p in data) {
+                    a.push(p + '=' + data[p]);
+                }
+
+
+                (new Image).src = pf._url + '?' + a.join('&');
+            }
+        };
+        context.speed = speed;
+        speed.firstScCount = 0;
+        (function () {
+            window.logid = "11309236653840735756";
+            loaded = 0;
+            var addWindowEvent = window.addEventListener ?
+                function(type, fn) { window.addEventListener(type, fn, false); } :
+                function(type, fn) { window.attachEvent('on' + type, fn); };
+            addWindowEvent('beforeunload', function () {
+                if (!loaded) {
+                    speed.mark('leave');
+                    speed.send();
+                }
+            });
+
+            addWindowEvent('load', function () {
+                loaded = 1;
+            });
+        })();
+    })(window);
+</script>
+<script>
+    // ala进入打点
+    try {
+        if (!window._alaEnter) {
+            window._alaEnter = true;
+            function query2Json(query) {
+                var json = {};
+                var search = query.split("&");
+                for (var i = search.length - 1; i >= 0; i--) {
+                    var s = search[i].split('=');
+                    json[s[0]] = s[1];
+                }
+                return json;
+            }
+            var query = query2Json((location.search || '').replace('?', ''));
+            if (+query.hs && query.tn === 'baiduimage') {
+                var payload = 'dsp=pc&tn=result&hs=' + query.hs;
+                (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload + '&type=enter&t=' + (+new Date);
+                window._alaEnter = function (type) {
+                    (new Image()).src = '//image.baidu.com/pv/pv.gif?' + payload
+                        + '&type=' + type + '&t=' + (+new Date);
+                };
+                var sid = "08be31d951464886243b493a805b6e485b2664fc";
+                if (window.localStorage
+                    && window.localStorage.sid
+                    && window.localStorage.sid !== sid) {
+                    window._alaEnter('change');
+                }
+                window.localStorage.sid = sid;
+            }
+        }
+    } catch(e) {}
+</script>
+<html>
+    <!--STATUS OK-->
+    <head>
+        <meta http-equiv='Content-Type' content="text/html; charset=utf-8">
+        <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+        <noscript>
+            <meta http-equiv="refresh" content="0;url=/i?ct=201326592&lm=-1&tn=baiduimagenojs&ipn=rnj&pv=&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B&z=0&pn=0&rn=20&cl=2&ie=utf-8">
+            <style>table,.p{display:none}</style>
+        </noscript>
+        <title>
+海贼王_百度图片搜索</title>
+        <link rel="shortcut icon" href="https://www.baidu.com/cache/icon/favicon.ico" type="image/x-icon">
+        <link rel="icon" sizes="any" href="https://www.baidu.com/cache/icon/favicon.svg">
+        <script>
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+        <script>
+        var Ihttps_agent_config = {"http:\/\/nssug.baidu.com":"https:\/\/sp1.baidu.com\/8qUZeT8a2gU2pMbgoY3K\/su","http:\/\/img.baidu.com":"https:\/\/gss2.bdstatic.com\/70cFsjip0QIZ8tyhnq","http:\/\/himg.bdimg.com":"https:\/\/ss1.bdstatic.com\/7Ls0a8Sm1A5BphGlnYG","http:\/\/apps.bdimg.com":"https:\/\/ss0.bdstatic.com\/9_QWf8Sm1A5BphGlnYG","http:\/\/f3.baidu.com":"https:\/\/sp3.baidu.com\/-uV1bjeh1BF3odCf","http:\/\/bzclk.baidu.com":"https:\/\/gsp0.baidu.com\/9q9JcDHa2gU2pMbgoY3K","http:\/\/img0.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFvHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img1.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFvXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img2.imgtn.bdimg.com":"https:\/\/ss2.bdstatic.com\/70cFvnSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img3.imgtn.bdimg.com":"https:\/\/ss3.bdstatic.com\/70cFv8Sh_Q1YnxGkpoWK1HF6hhy","http:\/\/img4.imgtn.bdimg.com":"https:\/\/ss0.bdstatic.com\/70cFuHSh_Q1YnxGkpoWK1HF6hhy","http:\/\/img5.imgtn.bdimg.com":"https:\/\/ss1.bdstatic.com\/70cFuXSh_Q1YnxGkpoWK1HF6hhy","http:\/\/bdimg.share.baidu.com":"https:\/\/gss0.baidu.com\/9rA4cT8aBw9FktbgoI7O1ygwehsv","http:\/\/dispatcher.video.qiyi.com":"https:\/\/gss0.bdstatic.com\/-LsZfDe52w9JkxG9m9iS_HFjgAkrreHg-_","http:\/\/passport.bdimg.com":"https:\/\/ss0.bdstatic.com\/5LMZfyabBhJ3otebn9fN2DJv"};
+    </script>
+        <script type="text/javascript" src="//img0.bdstatic.com/static/common/mod_6f6741d.js"></script>
+        <script>
+    //记录页面开始时间, 也用于vs埋点
+    window.pageStartTime = (new Date()).getTime();
+    window.shootBannerData = [];
+    window.isBigFu = '';
+   // window.scrollTo(0, 0);
+</script>
+        <script>
+    // 时效性热点
+        </script>
+        <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/pkg/co_2e2be3c.css"/>
+        <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/pkg/result_32ba3b9.css"/>
+        <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/common/widget/ui/slider/slider_ecce195.css"/>
+        <link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/common/widget/ui/userInfo/userInfo_5bd6198.css"/>
+        <link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvFilterView/AvFilterView_5709328.css"/>
+        <link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvMuiltSizeFilterView/AvMuiltSizeFilterView_5a57aa1.css"/>
+        <link rel="stylesheet" type="text/css" href="//img0.bdstatic.com/static/searchresult/widget/ui/base/view/AvTypeFilterView/AvTypeFilterView_cea6b92.css"/>
+        <link rel="stylesheet" type="text/css" href="//img1.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorWallFilterView/AvColorWallFilterView_cf8a646.css"/>
+        <link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/searchresult/widget/ui/base/view/AvColorFilterView/AvColorFilterView_5b1da63.css"/>
+        <link rel="stylesheet" type="text/css" href="//img2.bdstatic.com/static/common/widget/loginbar/loginbar_e8a6507.css"/>
+    </head>
+    <script> alog('speed.set', 'ht', +new Date); </script>
+    <body class="">
+        <script type="text/javascript">require.siteNS && require.siteNS(["searchresult", "common"]);require.resourceMap({"res":{"searchresult:widget/ui/app/noResultPage.js":{"url":"//img0.bdstatic.com/static/searchresult/widget/ui/app/noResultPage_ee2374d.js","deps":["common:widget/ui/base/base.js","searchresult:widget/ui/controls/relsearchBox/relsearchBox.js","common:widget/ui/userInfo/userInfo.js","searchresult:widget/ui/controls/hotwordBox/hotwordBox.js","searchresult:widget/ui/controls/suggBox/suggBox.js","searchresult:widget/ui/statistic/statistic.js"]},"common:widget/shitu/static/animate.js":{"url":"//img1.bdstatic.com/static/common/widget/shitu/static/animate_d5993fc.js","deps":["common:widget/ui/base/base.js"]},"common:widget/shitu/run.js":{"url":"//img0.bdstatic.com/static/common/widget/shitu/run_e30416e.js","deps":["common:widget/ui/base/base.js","common:widget/ui/utils/utils.js","common:widget/shitu/static/animate.js"]},"common:widget/ui/historyRecord/historyRecord.js":{"url":"//img2.bdstatic.com/static/common/widget/ui/historyRecord/historyRecord_31e31e1.js","deps":["common:widget/ui/base/base.js","common:widget/ui/base/events.js"]},"common:widget/ui/loginBox/loginBox.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/loginBox/loginBox_ea459f5.js"},"common:widget/loginbar/loginbar.js":{"url":"//img2.bdstatic.com/static/common/widget/loginbar/loginbar_f08c999.js","deps":["common:widget/ui/base/base.js","common:widget/ui/loginBox/loginBox.js","common:widget/ui/base/EventDispatcher.js"]},"common:widget/ui/sourcehttps/sourcehttps.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/sourcehttps/sourcehttps_a8b93d5.js"},"common:widget/ui/fmCheck/fmCheck.js":{"url":"//img1.bdstatic.com/static/common/widget/ui/fmCheck/fmCheck_e6197fc.js","deps":["common:widget/ui/base/base.js"]},"common:widget/ui/durationStat/durationStat.js":{"url":"//img0.bdstatic.com/static/common/widget/ui/durationStat/durationStat_d292e9f.js","deps":["common:widget/ui/utils/utils.js","common:widget/ui/base/base.js"]}}});</script>
+        <div id="search" class="">
+            <script>
+        (function() {
+            var search = document.getElementById('search');
+            var width = window.innerWidth
+                || (document.documentElement && document.documentElement.clientWidth)
+                || (document.body && document.body.clientWidth);
+            if (search && width < 1217) {
+                search.className = 'narrow ' + search.className;
+            }
+        })();
+    
+            </script>
+            <div class="s_search">
+                <div id="imgSearchBox">
+                    <div id="imgMainSearch">
+                        <a href="/" class="s_logo">
+                            <img src="//img0.bdstatic.com/static/searchresult/img/logo-2X_b99594a.png" alt="到 百度图片首页 来" title="返回 百度图片首页">
+                        </a>
+                        <div class="s_nav">
+                            <form action="/search/index" class="searchform" name="f1" onsubmit="return s_submit(this,true)">
+                                <input type="hidden" name="tn" value="baiduimage">
+                                <input type="hidden" name="ipn" value="r">
+                                <input name="ct" type="hidden" value="201326592">
+                                <input name="cl" type="hidden" value="2">
+                                <input name="lm" type="hidden" value="-1">
+                                <input name="st" type="hidden" value="-1">
+                                <input name="fm" type="hidden" value="result">
+                                <input name="fr" type="hidden" value="">
+                                <input name="sf" type="hidden" value="1">
+                                <input name="fmq" type="hidden" value="">
+                                <input name="pv" type="hidden" value="">
+                                <input name="ic" type="hidden" value="0">
+                                <input name="nc" type="hidden" value="1">
+                                <input name="z" type="hidden" value="">
+                                <input name="se" type="hidden" value="">
+                                <input name="showtab" type="hidden" value="0">
+                                <input name="fb" type="hidden" value="0">
+                                <input name="width" type="hidden" value="">
+                                <input name="height" type="hidden" value="">
+                                <input name="face" type="hidden" value="0">
+                                <input name="istype" type="hidden" value="2">
+                                <input name="ie" type="hidden" value="utf-8">
+                                <input name="ctd" type="hidden" value="">
+                                <span class="s_ipt_wr">
+                                    <input id="kw" name="word" class="s_ipt" value="海贼王" autocomplete="off" onfocus="this.parentNode.className='s_ipt_wr active'" onblur="this.parentNode.className='s_ipt_wr'"/>
+                                </span>
+                                <span class="s_btn_wr">
+                                    <input type="submit" class="s_btn" onmousedown="this.className='s_btn s_btn_h'" onmouseout="this.className='s_btn'"  value="百度一下"   />
+                                </span>
+                            </form>
+                            <div id="stcontent" class="common-shitu">
+                                <a class="sttb" hidefocus="true" id="sttb" href="javascript:void(0)" title="上传图片，搜索相关信息">
+                                    <img class="st_camera_off" src="//img1.bdstatic.com/static/common/widget/shitu/images/camera_new_off_a552294.png" width="20" height="20">
+                                    <img class="st_camera_on" src="//img2.bdstatic.com/static/common/widget/shitu/images/camera_new_on_4e3e250.png" width="20" height="20">
+                                    <div class="st_tips" id="stTipsBox">上传图片，搜索相关信息</div>
+                                    <div class="st_tips_arrow_in" id="stTipArrowIn"></div>
+                                    <div class="st_tips_arrow_out" id="stTipArrowOut"></div>
+                                </a>
+                                <div id="stsug" class="stsug" style="display:none">
+                                    <div id="sthead">
+                                        <span>识图</span>
+                                        <img id="sthelp" width="13" height="13" src="//img2.bdstatic.com/static/common/widget/shitu/images/mark_b68ff2e.png" />
+                                    </div>
+                                    <div class="stf">
+                                        <form id="form2" target="_self" enctype="multipart/form-data" name="form2">
+                                            <a id="uploadImg" href="javascript:void(0)" data-nsclick="p=1811102&tn=index&event_type=shitu.search.click&pos=upload">本地上传
+                                                <input type="file" name="image" id="stfile" size="2">
+                                            </a>
+                                            <div class="st_dragtg" id="dragtg" style="display:none;">提示：您也可以把图片拖到这里</div>
+                                            <input id="shitu2" name="pos" value="" type="hidden">
+                                            <input name="uptype" value="upload_pc" type="hidden">
+                                            <input name="fm" value="index" type="hidden"> 
+                                        </form>
+                                        <form id="form1" target="_self" enctype="multipart/form-data" method="get" name="form1">
+                                            <div id="sturl">
+                                                <span class="stuwr">
+                                                    <input type="text" id="stuurl" placeholder="在此处粘贴图片网址" value="" autocomplete="off"  class="stuurl" name="objurl"> 
+                                                </span>
+                                                <span class="stsb">
+                                                    <input type="submit" id="sbobj" class="stsb2" onmousedown="this.className='stsb2 stsb3'" onmouseout="this.className='stsb2'" onmouseover="this.className='stsb2 stsb4'" value="识图一下"> 
+                                                </span>
+                                            </div>
+                                            <input name="filename" id="filename" value="" type="hidden">
+                                            <input name="rt" value="0" type="hidden">
+                                            <input name="rn" value="10" type="hidden">
+                                            <input id="stftn" name="ftn" value="wantu" type="hidden">
+                                            <input name="ct" value="1" type="hidden">
+                                            <input name="stt" value="0" type="hidden">
+                                            <input name="tn" value="shituresultpc" type="hidden">
+                                            <input id="shitu1" name="uptype" value="paste" type="hidden">
+                                            <input name="fm" value="index" type="hidden"> 
+                                        </form>
+                                    </div>
+                                    <div class="drag-text-tip" id="dttip">拖拽图片到此处试试</div>
+                                    <div id="stmore" style="display:none;">
+                                        <div class="stmore-header">百度识图</div>
+                                        <ul>
+                                            <li>识别人物、搜索服饰、寻找高清素材、浏览相似美图，尽在百度识图!</li>
+                                        </ul>
+                                        <div class="stmore_arrow_in"></div>
+                                        <div class="stmore_arrow_out"></div>
+                                    </div>
+                                    <a id="closest" href="javascript:void(0);" title="关闭"></a>
+                                    <div id="point" style="display:none;">
+                                        <img src="//img1.bdstatic.com/img/image/shitu/feimg/uploading.gif" />
+                                        <span>正在识别中，请稍候...</span>
+                                        <a id="cancelst" href="javascript:void(0);" title="取消"></a>
+                                    </div>
+                                    <div class="undrag-text-tip" id="undragtip">
+                                        <p>抱歉，Safari不支持拖拽识图。
+                                            <br/> 请保存图片到本地，通过本地上传或在搜索框粘贴图片url进行识图。
+                                        </p>
+                                    </div>
+                                    <div class="undrag-text-tip" id="untip">
+                                        <p>IE9及以下版本浏览器不支持识图功能，
+                                            <br/> 请升级浏览器或使用Chrome、QQ、搜狗浏览器进行识图
+                                        </p>
+                                    </div>
+                                    <div id="dragtip" style="display:none;">
+                                        <span>请拖拽图片到此处</span>
+                                        <div class="drag_dot_area drag_dot_left_top"></div>
+                                        <div class="drag_dot_area drag_dot_left_bottom"></div>
+                                        <div class="drag_dot_area drag_dot_right_top"></div>
+                                        <div class="drag_dot_area drag_dot_right_bottom"></div>
+                                        <a id="cancelst" href="javascript:void(0);" title="取消"></a>
+                                    </div>
+                                    <div class="left-border"></div>
+                                    <div class="right-border"></div>
+                                </div>
+                                <div id="mock-stsug"></div>
+                            </div>
+                        </div>
+                        <div id="imgfilter">
+                            <a id="imgfilter-btn" class="filter-open" href="javascript:;">
+                                <span class="imgfilter-text">图片筛选</span>
+                                <span class="imgfilter-arrow"></span>
+                            </a>
+                            <div id="filter-holder" style="display:none">
+                                <span class="holder-arrow"></span>
+                                <div id="top-filter-hoder">
+                                    <div id="filter-container">
+                                        <div class="filter" id="filter">
+                                            <div id="sizeFilter" class="subFilter sizeFilter"></div>
+                                            <div id="colorFilter" class="subFilter"></div>
+                                            <div id="typeFilter" class="subFilter"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id='userInfo'>
+                            <a target='_blank' href='http://www.baidu.com/'>百度首页</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="pageLayoutTipWindow">
+                <div class="page-layouttip-banner">
+                    <div class="page-layouttip-describe">温馨提示：由于您的浏览器安装了某些插件，导致页面布局失败，重新加载可恢复布局</div>
+                    <div class="page-layouttip-loadbtn">重新加载</div>
+                    <div class="page-layouttip-viewbtn">继续查看</div>
+                </div>
+            </div>
+            <script>
+var commonHeaderConf = {
+	sugProdName: "image",
+	searchInputId: "kw"
+};
+void function(w){
+	window.setHeadUrl= function(o){
+		var links = {
+		i_news:['word','https://www.baidu.com/s?rtt=1&bsst=1&cl=2&tn=news&fr=image&ie=utf-8',1],
+        i_webpage:['wd','https://www.baidu.com/s?ie=utf-8',1],
+		i_tieba:['kw','http://tieba.baidu.com/f?ie=utf-8',1],
+		i_zhidao:['word','http://zhidao.baidu.com/q?ct=17&pn=0&tn=ikaslist&rn=10&lm=0&ie=utf-8',1],
+		i_mp3:['key','http://music.baidu.com/search?fr=img&ie=utf-8',1],
+		i_video:['wd','https://www.baidu.com/sf/vsearch?pd=video&tn=vsearch&ie=utf-8&wrsv_spt=10',1],
+		i_map:['wd','http://map.baidu.com/?newmap=1&ie=utf-8&s=s',2],
+		i_baike:['word','http://baike.baidu.com/search/word?pic=1&sug=1&enc=utf8',1],
+		i_wenku:['word','http://wenku.baidu.com/search?ie=utf-8',1]
+		},
+		name = o.name,
+		items = links[name],
+		kw = document.getElementById(w),
+		reg = new RegExp('^\\s+|\\s+\x24'),
+		key = kw.value.replace(reg,'');
+		if(items){
+			if(key.length > 0){
+				var wd = items[0],
+					url = items[1],
+					proSign = items[2];
+				url = pro(url,wd,key,proSign);
+				o.href = url;
+
+			}else{
+				o.href = o.href.match(new RegExp('^http:\/\/.+\\.baidu\\.com'))[0];
+			}
+            if(!o.clickHandle){
+                o.onclick = function(e){
+                    if(typeof p === 'function'){
+                        e = e || window.event;
+                        p(e, 52, {isAsyn : true, to : this.name, href : this.href});
+                    }
+
+                };
+                o.clickHandle = true;
+            }
+		}
+		function pro(url,wd,key,proSign){
+			/*日文片假部分乱码\u30f7--\u30fb,转换成实体*/
+			function HtmlEncodeAndComponent(inTXT){
+				/*地图，uri编码，不转换成实体*/
+				if(proSign==2){
+					return encodeURIComponent(key);
+				}
+				var hexArray =[],entityCode = '',finalKey = '', character='',tmpInt=0;
+				for(i=0; i
+                <inTXT.length; i++){
+					character = inTXT.charCodeAt(i).toString(16).toUpperCase();
+					tmpInt = parseInt(character,16);
+					if(tmpInt>=0x30f7&&tmpInt<=0x30fb){
+						decCode = tmpInt.toString(10);
+						entityCode = '&#'+decCode+';';
+						finalKey += encodeURIComponent(entityCode);
+
+					}else{
+						entityCode = inTXT.charAt(i);
+						if(proSign>0){
+							finalKey += encodeURIComponent(entityCode);
+						}else{
+							finalKey += entityCode;
+						}
+					}
+				}
+				return finalKey;
+			}
+			var prefix = (url.indexOf('?')>0?'&':'?') + wd +'=';
+			if(proSign == 2){
+				prefix = encodeURIComponent(prefix);
+			}
+			key = HtmlEncodeAndComponent(key);
+			return url + prefix + key;
+		}
+	}
+}(commonHeaderConf.searchInputId);
+
+                </script>
+                <div class="s_tab" id="bdpcImgTab">
+                    <div id="bdpcImgTopTab">
+                        <a href="https://www.baidu.com/"  onmousedown="setHeadUrl(this)" name="i_webpage" >网页</a>
+                        <a href="http://news.baidu.com/" onmousedown="setHeadUrl(this)" name="i_news">资讯</a>
+                        <a href="http://tieba.baidu.com/" onmousedown="setHeadUrl(this)" name="i_tieba">贴吧</a>
+                        <a href="http://zhidao.baidu.com/" onmousedown="setHeadUrl(this)" name="i_zhidao" >知道</a>
+                        <a href="http://www.baidu.com/" onmousedown="setHeadUrl(this)" name="i_video" >视频</a>
+                        <a href="http://music.baidu.com/" onmousedown="setHeadUrl(this)" name="i_mp3" class="eng">音乐</a>
+                        <b>图片</b>
+                        <a href="http://map.baidu.com/" onmousedown="setHeadUrl(this)" name="i_map" >地图</a>
+                        <a href="http://wenku.baidu.com/" onmousedown="setHeadUrl(this)" name="i_wenku">文库</a>
+                        <a href="https://www.baidu.com/more/" onmousedown="setHeadUrl(this)" name="i_more">更多»</a>
+                    </div>
+                </div>
+                <script>
+	var imgMainSearch = document.getElementById('imgMainSearch');
+    var imgSearchBox = document.getElementById('imgSearchBox');
+	var bdpcImgTab = document.getElementById('bdpcImgTab');
+	var bdpcImgTopTab = document.getElementById('bdpcImgTopTab');
+	
+	var setSearchStyle = function (flag) {
+		var winWidth = window.innerWidth
+		|| (document.documentElement && document.documentElement.clientWidth)
+		|| (document.body && document.body.clientWidth);
+		if (imgMainSearch && imgSearchBox && bdpcImgTab && bdpcImgTopTab && winWidth > 1920) {
+			bdpcImgTab.className = 's_tab s_img_tab';
+		    bdpcImgTopTab.className = 's_imgtop_tab';
+		    imgMainSearch.className = 's_img_search';
+	        imgSearchBox.className = 's_img_search_out';
+		} else if (flag) {
+        	imgMainSearch.className = '';
+            imgSearchBox.className = '';
+            bdpcImgTab.className = 's_tab';
+	    	bdpcImgTopTab.className = '';
+        }
+	};
+
+	setSearchStyle();
+
+	window.onresize = function () {
+		setSearchStyle(1);
+    };
+</script>
+                <div id="topInfoBar">
+                    <div id="topRS">
+                        <em class="pull-rs-title">相关搜索：</em>
+                        <a class="pull-rs" title="查看 海贼王 壁纸"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B+%E5%A3%81%E7%BA%B8&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王 壁纸</a>
+                        <a class="pull-rs" title="查看 海贼王吧"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%90%A7&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王吧</a>
+                        <a class="pull-rs" title="查看 海贼王 索隆"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B+%E7%B4%A2%E9%9A%86&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王 索隆</a>
+                        <a class="pull-rs" title="查看 海贼王 头像"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B+%E5%A4%B4%E5%83%8F&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王 头像</a>
+                        <a class="pull-rs" title="查看 海贼王图片 索隆"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%9B%BE%E7%89%87+%E7%B4%A2%E9%9A%86&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王图片 索隆</a>
+                        <a class="pull-rs" title="查看 海贼王图片 路飞"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%9B%BE%E7%89%87+%E8%B7%AF%E9%A3%9E&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王图片 路飞</a>
+                        <a class="pull-rs" title="查看 海贼王壁纸高清大图"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%A3%81%E7%BA%B8%E9%AB%98%E6%B8%85%E5%A4%A7%E5%9B%BE&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王壁纸高清大图</a>
+                        <a class="pull-rs" title="查看 海贼王图片 壁纸"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%9B%BE%E7%89%87+%E5%A3%81%E7%BA%B8&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王图片 壁纸</a>
+                        <a class="pull-rs" title="查看 海贼王 电脑桌面"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B+%E7%94%B5%E8%84%91%E6%A1%8C%E9%9D%A2&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王 电脑桌面</a>
+                        <a class="pull-rs" title="查看 海贼王艾斯"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E8%89%BE%E6%96%AF&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王艾斯</a>
+                        <a class="pull-rs" title="查看 海贼王壁纸 竖屏"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%A3%81%E7%BA%B8+%E7%AB%96%E5%B1%8F&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王壁纸 竖屏</a>
+                        <a class="pull-rs" title="查看 海贼王漫画"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E6%BC%AB%E7%94%BB&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王漫画</a>
+                        <a class="pull-rs" title="查看 海贼王高清壁纸"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E9%AB%98%E6%B8%85%E5%A3%81%E7%BA%B8&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王高清壁纸</a>
+                        <a class="pull-rs" title="查看 海贼王图片 头像"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E5%9B%BE%E7%89%87+%E5%A4%B4%E5%83%8F&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王图片 头像</a>
+                        <a class="pull-rs" title="查看 海贼王乔巴"  target="_self"  href="/search/index?ct=201326592&cl=2&st=-1&lm=-1&nc=1&ie=utf-8&tn=baiduimage&ipn=r&rps=1&pv=&fm=rs1&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B%E4%B9%94%E5%B7%B4&hs=0&oriquery=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&ofr=%25E6%25B5%25B7%25E8%25B4%25BC%25E7%258E%258B&sensitive=0">海贼王乔巴</a>
+                    </div>
+                    <div id="timeliness" class="hotpot-container"></div>
+                    <script type="text/juicer" id="timeliness-tpl">
+                        <div id="timeliness-bless">
+                            <div class="blessing-img-wrapper">
+                                <img class="blessing-img" src="${icon.normal}" alt="" />
+                                <img class="blessing-img icon-zoomup" src="${icon.normal}" alt="" />
+                            </div>
+                            <span class="blessing-content">
+            ${title}
+        </span>
+                            <div class="blessing-count-wrapper">
+            (
+                                <span class="blessing-count"></span>人)
+                            </div>
+                        </div>
+                        <div class="egg">
+                            <img class="blessing-img-egg" src="${egg}" alt="" />
+                        </div>
+                    </script>
+                </div>
+                <div id="specialQuery"></div>
+                <div id="browser-hotword"></div>
+            </div>
+            <script>
+    window.vsid = '2905d50a4f34207f8aeaf361b3f73b00948740e3';
+</script>
+            <div id="wrapper">
+                <div id="pnlBeforeContent">
+                    <div class="news-slider"></div>
+                    <div id="smeContainer" style="display:none;"></div>
+                </div>
+                <div id="imgContainer" class="">
+                    <div id="timeliness-title">
+                        <img class="blessing-img guideIcon" src="">
+                        <span class="timeliness-desc"></span>
+                    </div>
+                    <div id="pnlBeforeImgList">
+                        <div class="memory-con" id="memoryBar" style="display: none;">您收藏时已经看到第
+                            <span class="memory-page">10</span>页，
+                            <span>
+                                <a class="memory-link">点击直达</a>
+                            </span>
+                            <a class="memory-close"></a>
+                        </div>
+                    </div>
+                    <div id="specialRecommend"></div>
+                    <div id="imgid"></div>
+                    <div id="lastPage" style="position:relative;overflow:hidden;padding-left:50px;zoom:1;display:none;">
+为给您提供最相关的图片结果，百度已省略与以上结果相类似的图片，您可
+                        <a href="/">点此查看更多搜索结果</a>。
+                    </div>
+                    <div id="ajaxInfo"></div>
+                    <div id="noPage" >
+                        <div id="dataNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+抱歉，在该筛选条件下，没有找到与
+                            <font color="#C60A00">海贼王</font>相关的图片。
+                        </div>
+                        <div id="stdNone" style="margin:0 0 0 15px;font-size:14px;line-height:20px;">
+                            <br>
+                            <br>
+                            <font class="fB" style="font-size:14px">百度建议您：</font>
+                            <div style="font-size:14px;margin-top:0px;">
+                                <li id="listSetDefault">将筛选功能
+                                    <a href="/search/index?ct=201326592&z=&s=&tn=baiduimage&ipn=r&word=%E6%B5%B7%E8%B4%BC%E7%8E%8B&ie=utf-8&oe=utf-8&lm=-1&st=-1&z=&se=0&fr=&pn=0&width=&height=&face=0&ct=503316480" onclick="" >恢复默认状态</a>
+                                </li>
+                                <li>修改当前的筛选条件</li>
+                                <li >看看输入的文字是否有误</li>
+                            </div>
+                            <div id=DivPost style="margin-top:0px;margin-left:15px;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear:both;"></div>
+                <p href="javascript:void(0);" id="loading">
+                    <img style="width:50px;height:54px;"/>
+                </p>
+                <div id="pageMoreWrap">
+                    <a href="javascript:void(0);" onmousedown="p(null,499,{domid:'pageMore',type:'click'})" id="pageMore">加载更多图片</a>
+                    <div id="resultInfo">找到相关图片约625,000张</div>
+                </div>
+                <div id="pnlAfterContent" style="display:none">
+                    <div id="cmsimage">
+                        <div id="hotWordDiv"></div>
+                    </div>
+                    <div id="relecom54"></div>
+                </div>
+            </div>
+            <div id="loginbar" style="display:none;">
+                <div class="loginbar-inner">
+                    <div class="login-png"></div>
+                    <a class="baidulogin" href="javascript:;">百度账号登陆</a>
+                    <span>或</span>
+                    <a class="baidureg" href="javascript:void(0);">注册</a>
+                </div>
+                <a class="loginbar-close" href="javascript:;">关闭</a>
+            </div>
+            <script>
+    window.alogObjectConfig = {
+        product: '11',
+        page: '2', 
+        speed_page: '2',  
+ 
+        speed: {
+            sample: '0.01'   
+        },
+ 
+       
+        monkey: {
+            sample: '0.01'   
+        },
+ 
+        exception: { 
+            sample: '0.01' 
+        },
+ 
+        feature: {
+            sample: '0.01'
+        },
+ 
+        
+        cus: {
+            sample: '0.01' 
+        },
+ 
+        csp: {
+            sample: '0.01',
+            'default-src': [
+                {match: '*bae.baidu.com', target: 'Accept,Warn'},
+                {match: '*.baidu.com,*.bdstatic.com,*.bdimg.com,localhost,*.hao123.com,*.hao123img.com', target: 'Accept'},
+                {match: /^(127|172|192|10)(\.\d+){3}$/, target: 'Accept'},
+                {match: '*', target: 'Accept,Warn'}
+            ]
+        }
+    };
+ 
+    // pc和mobile端会稍有不同，必须严格按照该文档来部署，该段代码必须放在上面的window.alogObjectConfig配置之后
+    void function(a,b,c,d,e,f,g){a.alogObjectName=e,a[e]=a[e]||function(){(a[e].q=a[e].q||[]).push(arguments)},a[e].l=a[e].l||+new Date,d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d;var h=!0;if(a.alogObjectConfig&&a.alogObjectConfig.sample){var i=Math.random();a.alogObjectConfig.rand=i,i>a.alogObjectConfig.sample&&(h=!1)}h&&(f=b.createElement(c),f.async=!0,f.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),g=b.getElementsByTagName(c)[0],g.parentNode.insertBefore(f,g))}(window,document,"script","/hunter/alog/alog.min.js","alog"),void function(){function a(){}window.PDC={mark:function(a,b){alog("speed.set",a,b||+new Date),alog.fire&&alog.fire("mark")},init:function(a){alog("speed.set","options",a)},view_start:a,tti:a,page_ready:a}}();
+    void function(n){var o=!1;n.onerror=function(n,e,t,c){var i=!0;return!e&&/^script error/i.test(n)&&(o?i=!1:o=!0),i&&alog("exception.send","exception",{msg:n,js:e,ln:t,col:c}),!1},alog("exception.on","catch",function(n){alog("exception.send","exception",{msg:n.msg,js:n.path,ln:n.ln,method:n.method,flag:"catch"})})}(window);
+</script>
+            <script>
+    void function(e,t){for(var n=t.getElementsByTagName("img"),a=+new Date,i=[],o=function(){this.removeEventListener&&this.removeEventListener("load",o,!1),i.push({img:this,time:+new Date})},s=0;s< n.length;s++)!function(){var e=n[s];e.addEventListener?!e.complete&&e.addEventListener("load",o,!1):e.attachEvent&&e.attachEvent("onreadystatechange",function(){"complete"==e.readyState&&o.call(e,o)})}();alog("speed.set",{fsItems:i,fs:a})}(window,document);
+
+            </script>
+            <a id="backTop" href="javascript:;" data-title="返回顶部">
+                <div class="btn-inner-text"></div>
+            </a>
+            <a href="javascript:;" id="report_link" data-title="反馈图片">
+                <div class="btn-inner-text">反馈</div>
+            </a>
+            <script>
+    (function () {
+        var pos = '';
+        if (pos == 1) {
+            pos = '-title';
+        } else if (pos == 3) {
+            pos = '-more';
+        } else {
+            pos = '';
+        }
+
+        document.addEventListener && document.addEventListener('DOMContentLoaded', function () {
+
+            var net = 0;
+            var isPreLoaded = 0;
+            var start = speed.get('start');
+
+            if(window.performance){
+                net = window.performance.timing.navigationStart;
+            }
+            net && speed.mark('net', start - net);
+            speed.mark('preloaded', isPreLoaded);
+            speed.mark('domc');
+            // 针对chrome细分数据
+            if (window.performance && window.performance.timing) {
+                var timing = window.performance.timing;
+                // tcp connct时间
+                speed.mark('dnst', timing.domainLookupEnd - timing.domainLookupStart);
+                // dns解析时间
+                speed.mark('cot', timing.connectEnd - timing.connectStart);
+                // 首字节返回时间点
+                speed.mark('rpnt', timing.responseStart);
+                if (net) {
+                    // tc跳板时间
+                    speed.mark('tct', timing.navigationStart - net);
+                    // 网络开始时间点
+                    speed.mark('nets', net);
+                }
+                speed.mark('connectStart', timing.connectStart);
+            }
+        }, false);
+
+        var addWindowEvent = window.addEventListener ?
+            function(type, fn) { window.addEventListener(type, fn, false); } :
+            function(type, fn) { window.attachEvent('on' + type, fn); };
+        addWindowEvent('load', function () {
+            var url = location.href;
+            url = url.replace(/&ctd=([^&]+)/, '');
+            if (url) {
+                window.history && window.history.replaceState && window.history.replaceState(null, "", url + '');
+            }
+
+            speed.mark('load');
+            LazySend();
+        });
+
+        function LazySend() {
+            if (speed.firstScCount >= 5) {
+                speed.mark('frm', '');
+                speed.send();
+            } else {
+                setTimeout(LazySend, 1000);
+            }
+        }
+    })();
+</script>
+            <script>
+    (function () {
+        if (window._alaEnter && window._alaEnter !== true) {
+            window._alaEnter('end');
+            var oldOnerror = window.onerror;
+            window.onerror = function (msg, source, lineno, colno) {
+                try {
+                    oldOnerror && oldOnerror.apply(window, arguments);
+                    var str = 'error&source=' + source + '&msg=' + msg + '&ln=' + lineno + '&cn=' + colno;
+                    window._alaEnter(str);
+                } catch (e) {}
+            };
+        }
+    })();
+</script>
+            <script>
+    </script>
+            <script>
+    void function(a,b,c,d,e,f){function g(b){a.attachEvent?a.attachEvent("onload",b,!1):a.addEventListener&&a.addEventListener("load",b)}function h(a,c,d){d=d||15;var e=new Date;e.setTime((new Date).getTime()+1e3*d),b.cookie=a+"="+escape(c)+";path=/;expires="+e.toGMTString()}function i(a){var c=b.cookie.match(new RegExp("(^| )"+a+"=([^;]*)(;|$)"));return null!=c?unescape(c[2]):null}function j(){var a=i("PMS_JT");if(a){h("PMS_JT","",-1);try{a=a.match(/{["']s["']:(\d+),["']r["']:["']([\s\S]+)["']}/),a=a&&a[1]&&a[2]?{s:parseInt(a[1]),r:a[2]}:{}}catch(c){a={}}a.r&&b.referrer.replace(/#.*/,"")!=a.r||alog("speed.set","wt",a.s)}}if(a.alogObjectConfig){var k=a.alogObjectConfig.sample,l=a.alogObjectConfig.rand;d="https:"===a.location.protocol?"https://fex.bdstatic.com"+d:"http://fex.bdstatic.com"+d,k&&l&&l>k||(g(function(){alog("speed.set","lt",+new Date),e=b.createElement(c),e.async=!0,e.src=d+"?v="+~(new Date/864e5)+~(new Date/864e5),f=b.getElementsByTagName(c)[0],f.parentNode.insertBefore(e,f)}),j())}}(window,document,"script","/hunter/alog/dp.min.js");
+</script>
+        </body>
+        <script type="text/javascript"  src="//img0.bdstatic.com/static/common/widget/ui/base/base_a66ce51.js" ></script>
+        <script type="text/javascript"  src="//img0.bdstatic.com/static/common/pkg/cores_2cc0104.js" ></script>
+        <script type="text/javascript"  src="//img1.bdstatic.com/static/common/widget/ui/juicer/juicer_59c3d50.js" ></script>
+        <script type="text/javascript"  src="//img1.bdstatic.com/static/searchresult/pkg/result_a1e862a.js" ></script>
+        <script type="text/javascript">!function(){    window._alaEnter && window._alaEnter !== true && window._alaEnter('sample');
+    var sample = {"UI_FEITIAN":"1"};
+    var keyValue = '';
+    for(var name in sample) {
+        keyValue +=  name + ':' + sample[name] + ',';
+    }
+    window.samplekey = keyValue.substr(0, keyValue.length - 1);
+}();
+!function(){// ala进入问题调查
+window._alaEnter && window._alaEnter !== true && window._alaEnter('prerequire');
+require.async(['searchresult:widget/ui/app/app'], function (app) {
+    window._alaEnter && window._alaEnter !== true && window._alaEnter('postrequire');
+    require.async(['searchresult:widget/ui/action/base/base']);
+    app.setPageInfo({
+        // 在后端对query进行抽样的时候，用这个来统计实验组和对照组
+        queryPageType : '0',
+        tag_type: '',
+        tag: '',
+        subtag: '',
+        gsm: '1e',
+        listNum : '1874',
+        dispNum : '625716',
+        bdIsClustered : '1',
+        fr : '',
+        sme : '',
+        ie : 'utf-8',
+        oe : 'utf-8',
+        fInsertNum : "0",
+        queryWordEnc: '%E6%B5%B7%E8%B4%BC%E7%8E%8B',
+        queryWordGBKEnc: '%BA%A3%D4%F4%CD%F5',
+        queryWord : '海贼王',
+        queryUrlWord : '%E6%B5%B7%E8%B4%BC%E7%8E%8B',
+        bdFmtDispNum : '625716',
+        bdSearchTime : '',
+        gbkword:'%BA%A3%D4%F4%CD%F5',
+        resTabs : [],
+        userid:'',
+        useSign:'',
+        userNumID:'', // 这个才是真正的 userid
+        encodeUserNumId:'',
+        spaceUrl:'',
+        hasUserName: ('' == '0'),
+        bdstoken : '',
+        thirdLogo :'0', // 第三方网站登录的logo，为空则不显示
+        se:'',
+        needIE:'1',
+        jit:'',
+        showHot:'',
+        hasResult: '1',
+        aspSID:'9cf27ad159011e0c',
+        oriquery: '',
+        fm: '',
+        hs: '0',
+        adBigPicPos: -1,
+                checkHttps: 0,
+                strategyType: 'normal',
+                                        personalized:'0'
+    });
+    app.setData('jsConfs', {    "normal": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,"lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,"pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,"maxImgWidth": 400,"pageMoreNum": 10,"leftMenu": 0    },    "comic": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "ald": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 190,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu":0    },    "avatar_brand": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 300,        "maxBaseLineHeight": 320,        "minBaseLineHeight": 280,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 500,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_star": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 260,        "maxBaseLineHeight": 280,        "minBaseLineHeight": 250,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,"leftMenu": 0    },    "avatar_head": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 210,        "minBaseLineHeight": 190,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "avatar_wallpaper": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 180,        "maxBaseLineHeight": 200,        "minBaseLineHeight": 160,        "pageLineNum": 3,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 190    },    "single": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 1,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    },    "personalized": {        "margin": 5,        "padding": 0,        "pageNumHeight": 33,        "lineHeight": 200,        "maxBaseLineHeight": 220,        "minBaseLineHeight": 200,        "pageLineNum": 2,        "pageImgLimit": 20,        "imgDigestHeight": 0,        "maxImgWidth": 400,        "pageMoreNum": 10,        "leftMenu": 0    }}
+);
+    app.setData('imgData', {    "queryEnc":"%E6%B5%B7%E8%B4%BC%E7%8E%8B",    "displayNum":625716,    "bdIsClustered" : "1",    "listNum":1874,    "bdFmtDispNum" : "625716",    "bdSearchTime" : "",    "isNeedAsyncRequest":0,"data":[{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2883431690,2728811406&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=2883431690,2728811406&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=564515259"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2883431690,2728811406&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2883431690,2728811406&fm=26&gp=0.jpg",            "pageNum":0,            "objURL":"http://b-ssl.duitang.com/uploads/item/201604/21/20160421221022_3wrVx.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=cm9c8cdcl",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":1920,            "height":1080,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"44427831360",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+            <strong>海贼王<\/strong>壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2883431690,2728811406",            "os" : "4273866674,624106535",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2619041913,1993805171&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=2619041913,1993805171&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=383271579"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2619041913,1993805171&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=2619041913,1993805171&fm=26&gp=0.jpg",            "pageNum":1,            "objURL":"http://b-ssl.duitang.com/uploads/item/201506/15/20150615024546_3HLef.thumb.700_0.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=nbnd08c0l",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":700,            "height":1243,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"38251308590",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                <strong>海贼王<\/strong> asl 壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2619041913,1993805171",            "os" : "1059903566,2436614076",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1052424559,2237473873&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=1052424559,2237473873&fm=214&gp=0.jpg","FromURL":"http:\/\/www.5068.com\/tupian\/bizhi\/434344_4.html"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1052424559,2237473873&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1052424559,2237473873&fm=26&gp=0.jpg",            "pageNum":2,            "objURL":"http://uploads.5068.com/allimg/1712/151-1G21P92434-50.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bcamb_z&e3Bv54AzdH3Fp7rtwgAzdH3FktzitAzdH3F9n9n99_9_z&e3Bip4s",            "fromURLHost":"www.5068.com","currentIndex":"",            "width":1280,            "height":720,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"114098962010",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                    <strong>海贼王<\/strong>艾斯高清电脑动漫壁纸图片(4)",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1052424559,2237473873",            "os" : "3996499390,1381165130",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=695807166,1996829555&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=695807166,1996829555&fm=214&gp=0.jpg","FromURL":"http:\/\/zhidao.baidu.com\/question\/1884715666966950268.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=695807166,1996829555&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=695807166,1996829555&fm=26&gp=0.jpg",            "pageNum":3,            "objURL":"http://f.hiphotos.baidu.com/zhidao/pic/item/7acb0a46f21fbe098e66ace86d600c338744ad16.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fzit1w5_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3F8bb908cmmmlmmlcadmb_z&e3Bip4s",            "fromURLHost":"zhidao.baidu.com","currentIndex":"",            "width":2268,            "height":1175,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"176211467080",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"求
+                        <strong>海贼王<\/strong>鱼人岛壁纸高清大图",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "695807166,1996829555",            "os" : "135360000,422721418",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1365728860,551627940&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=1365728860,551627940&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=325997091"},{"ObjURL":"http:\/\/img5.duitang.com\/uploads\/item\/201208\/13\/20120813111611_lrc5t.jpeg","FromURL":"http:\/\/www.duitang.com\/people\/mblog\/85840463\/detail\/"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1365728860,551627940&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1365728860,551627940&fm=26&gp=0.jpg",            "pageNum":4,            "objURL":"http://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/1f178a82b9014a906b25143ca9773912b31bee1c.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fr5oj6_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3F90nladbl8_z&e3Bip4s?qks=6jswpj_q7jfpt5g_a",            "fromURLHost":"power.baidu.com","currentIndex":"",            "width":600,            "height":429,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"139364654770",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"求
+                            <strong>海贼王<\/strong>草帽一伙的西服合照",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1365728860,551627940",            "os" : "1872230644,4049993259",            "simid" : "3412152784,130498176",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3585997636,4273461461&fm=11&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3585997636,4273461461&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":5,            "objURL":"http://07imgmini.eastday.com/mobile/20180922/20180922134338_eba3344353f71d2e613d5b5d2bd819ba_1.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3F4tgt_z&e3Bjwfp1wy_z&e3Bv54AzdH3FwAzdH3F8baldd8n9nnbadc_z&e3Bip4s",            "fromURLHost":"mini.eastday.com","currentIndex":"",            "width":640,            "height":412,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"11",            "di":"117119716700",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                <strong>海贼王<\/strong>:从进入新世界到海上\"五皇\",路飞的成长是否开挂?",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3585997636,4273461461",            "os" : "4265353847,3498516996",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1470914017,1172178557&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=1470914017,1172178557&fm=214&gp=0.jpg","FromURL":"http:\/\/weibo.com\/5682105172\/fugw51nny"},{"ObjURL":"http:\/\/i1.hdslb.com\/bfs\/archive\/e0bc857bcb3625b292a6fd1abd760e69e491b8ea.jpg","FromURL":"http:\/\/www.jijidown.com\/up\/\u679c\u6728\u679c\u6728\u8afe"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1470914017,1172178557&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1470914017,1172178557&fm=26&gp=0.jpg",            "pageNum":6,            "objURL":"http://image.jijidown.com/v1/image?av=12697112&url=https://i1.hdslb.com/bfs/archive/e0bc857bcb3625b292a6fd1abd760e69e491b8ea.jpg&sign=96F6C46C8AA332F132801F5529AE5D0A",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B3t3t15og_z&e3Bv54AzdH3Fet1j5AzdH3Fwe8dml088d",            "fromURLHost":"www.jijidown.com","currentIndex":"",            "width":1728,            "height":1080,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"62039042340",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"【
+                                    <strong>海贼王<\/strong> 中文字幕】因为他是我们的船长!",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1470914017,1172178557",            "os" : "3399484705,2901463170",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3256731760,583322837&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=3256731760,583322837&fm=214&gp=0.jpg","FromURL":"http:\/\/www.bjtptyn.com.cn\/nvwait\/196246\/"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3256731760,583322837&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3256731760,583322837&fm=26&gp=0.jpg",            "pageNum":7,            "objURL":"http://c.hiphotos.baidu.com/zhidao/pic/item/d833c895d143ad4bab65039c80025aafa40f0626.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fzit1w5_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3Fmb09aa80c8l0b9clm9_z&e3Bip4s",            "fromURLHost":"zhidao.baidu.com","currentIndex":"",            "width":708,            "height":1095,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"47631336610",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"求高清
+                                        <strong>海贼王<\/strong>的头像",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3256731760,583322837",            "os" : "569579852,1791534931",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2234162956,335270487&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=2234162956,335270487&fm=214&gp=0.jpg","FromURL":"http:\/\/tvmao.com\/tvcolumn\/kdiilmm="},{"ObjURL":"http:\/\/pic.4j4j.cn\/upload\/pic\/20151012\/078c0416f8.jpg","FromURL":"http:\/\/www.4j4j.cn\/zmbz\/13766.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2234162956,335270487&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2234162956,335270487&fm=26&gp=0.jpg",            "pageNum":8,            "objURL":"http://pic1.5442.com/2015/1004/04/11.jpg%21960.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fhf_z&e3Bx7jmn_z&e3Bv54AzdH3F3tw5y7x7jxtkwAzdH3Fi7wAzdH3F4wgi7wAzdH3Fn0m889m_z&e3Bip4s",            "fromURLHost":"ks.xue63.com","currentIndex":"",            "width":960,            "height":540,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"133728208350",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                            <strong>海贼王<\/strong>漫画图片壁纸高清",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2234162956,335270487",            "os" : "3152417566,3961949228",            "simid" : "4201453033,699994630",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2116930981,2792581090&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=2116930981,2792581090&fm=214&gp=0.jpg","FromURL":"http:\/\/baby.bao-jian.net\/ertong-hxxaxjehdhdwdcbcbcv.htm"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2116930981,2792581090&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2116930981,2792581090&fm=26&gp=0.jpg",            "pageNum":9,            "objURL":"http://img.zcool.cn/community/0152d257e389910000018c1b29eefb.jpg@1280w_1l_2o_100sh.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fkwky_z&e3Bkw5-3twg_z&e3BgjpAzdH3Fj6p5g2-ixxwx3ji1i1o1vkvkve_z&e3Bip4",            "fromURLHost":"baby.bao-jian.net","currentIndex":"",            "width":1024,            "height":417,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"81026764830",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                <strong>海贼王<\/strong>1集-417集",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2116930981,2792581090",            "os" : "1218397695,4250878340",            "simid" : "3291002802,180827890",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2358203292,3795797017&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=2358203292,3795797017&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=473700826"},{"ObjURL":"http:\/\/img3.duitang.com\/uploads\/item\/201510\/22\/20151022233405_twcrq.jpeg","FromURL":"http:\/\/baby.bao-jian.net\/ertong-hejdvhvjc.htm"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2358203292,3795797017&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=2358203292,3795797017&fm=26&gp=0.jpg",            "pageNum":10,            "objURL":"http://b-ssl.duitang.com/uploads/item/201510/22/20151022233405_twCRQ.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=90nm9dcnd",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":1600,            "height":900,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"166981278310",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                    <strong>海贼王<\/strong> ",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2358203292,3795797017",            "os" : "68510516,721269304",            "simid" : "3487082560,458975164",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3839585572,224877099&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=3839585572,224877099&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/people\/mblog\/453094281\/detail\/"},{"ObjURL":"http:\/\/clubimg.dbankcdn.com\/data\/attachment\/forum\/201508\/27\/160052dxywg21y2zjx1kjj.jpg","FromURL":"http:\/\/club.huawei.com\/thread-5451453-1-1.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3839585572,224877099&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3839585572,224877099&fm=26&gp=0.jpg",            "pageNum":11,            "objURL":"http://img5.duitang.com/uploads/item/201412/12/20141212185006_vcMns.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Frj5rsjAzdH3F4ks52AzdH3Fdm8aan9d8AzdH3F1jpwtsAzdH3F",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":1440,            "height":1280,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"135769911420",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                        <strong>海贼王<\/strong>‖我是要成为海贼王的男人.",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3839585572,224877099",            "os" : "2394481825,2992801389",            "simid" : "3993856627,619691410",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3975129222,3945451968&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=3975129222,3945451968&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=98774159"},{"ObjURL":"http:\/\/b-ssl.duitang.com\/uploads\/item\/201506\/12\/20150612224545_kjd8x.jpeg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=523302363"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3975129222,3945451968&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3975129222,3945451968&fm=26&gp=0.jpg",            "pageNum":12,            "objURL":"http://b-ssl.duitang.com/uploads/item/201705/10/20170510130659_2VQjE.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=0c8n0a0b9",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":715,            "height":445,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"2410337380",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"草帽",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3975129222,3945451968",            "os" : "4082118583,3965212697",            "simid" : "3386665248,133966426",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4231464068,4164747216&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=4231464068,4164747216&fm=214&gp=0.jpg","FromURL":"http:\/\/www.bilibili.com\/video\/av7090107"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4231464068,4164747216&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=4231464068,4164747216&fm=26&gp=0.jpg",            "pageNum":13,            "objURL":"http://i1.hdslb.com/bfs/archive/db80310f4e3ee685759c88f82e8dc70116119a29.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bktstktst_z&e3Bv54AzdH3Fet1j5AzdH3Fwe0ala8a0",            "fromURLHost":"www.bilibili.com","currentIndex":"",            "width":2880,            "height":1800,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"34748042670",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"(op-amv)
+                                                            <strong>海贼王<\/strong>:变强!变强!",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "4231464068,4164747216",            "os" : "1996392034,2443875763",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=233464691,1735449645&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=233464691,1735449645&fm=214&gp=0.jpg","FromURL":"http:\/\/www.miui.com\/thread-1097731-3-1.html"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=233464691,1735449645&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=233464691,1735449645&fm=26&gp=0.jpg",            "pageNum":14,            "objURL":"http://attach.bbs.miui.com/forum/201304/01/125305o6qbdsg9kzb78k6m.png",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B4t7t_z&e3Bv54AzdH3Fpi6jw1-8al00n8-n-8_z&e3Bip4s",            "fromURLHost":"www.miui.com","currentIndex":"",            "width":1440,            "height":900,            "type":"png",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"47409362440",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                <strong>海贼王<\/strong>~one piece,已打包.贼迷自己拿",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "233464691,1735449645",            "os" : "1010642739,2213901159",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3375737854,2007699449&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=3375737854,2007699449&fm=214&gp=0.jpg","FromURL":"http:\/\/power.baidu.com\/question\/359998159687462452.html?qbl=relate_question_7"},{"ObjURL":"http:\/\/c.hiphotos.baidu.com\/zhidao\/pic\/item\/95eef01f3a292df54ab27fe8bb315c6035a873de.jpg","FromURL":"http:\/\/baby.bao-jian.net\/ertong-jhehvxjcc.htm"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3375737854,2007699449&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3375737854,2007699449&fm=26&gp=0.jpg",            "pageNum":15,            "objURL":"http://gss0.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/95eef01f3a292df54ab27fe8bb315c6035a873de.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fzit1w5_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3F8bl0m8bmlab0ln0cbda_z&e3Bip4s",            "fromURLHost":"zhidao.baidu.com","currentIndex":"",            "width":1600,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"107481287760",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"求一张
+                                                                    <strong>海贼王<\/strong>图",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3375737854,2007699449",            "os" : "2774500761,2580332571",            "simid" : "3484880264,302068291",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3104231139,2965291592&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=3104231139,2965291592&fm=214&gp=0.jpg","FromURL":"http:\/\/diyitui.com\/content-1476326186.58501665.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3104231139,2965291592&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3104231139,2965291592&fm=26&gp=0.jpg",            "pageNum":16,            "objURL":"http://i.dimg.cc/6a/8b/e9/24/aa/d0/a5/ec/be/a9/11/c1/06/50/d7/1c.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3F1tytp7t_z&e3Bv54AzdH3Fv5gpjgp-890mndm8bm_z&e3Bcbca8mmc_z&e3Bip4s",            "fromURLHost":"diyitui.com","currentIndex":"",            "width":1280,            "height":720,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"134301537480",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"壁纸 || 我是要成为
+                                                                        <strong>海贼王<\/strong>的男人",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3104231139,2965291592",            "os" : "2699060243,1271927",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=107489692,45401&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=107489692,45401&fm=214&gp=0.jpg","FromURL":"http:\/\/app.pchome.net\/wallpaper\/detail_9283.html"},{"ObjURL":"http:\/\/i3.download.fd.pchome.net\/t_600x1024\/g1\/m00\/12\/1b\/ooybafbnas-ibodnaae3izcqpcmaac3qwib9eqab7c5418.jpg","FromURL":"http:\/\/app.pchome.net\/wallpaper\/detail_9283.html"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=107489692,45401&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=107489692,45401&fm=26&gp=0.jpg",            "pageNum":17,            "objURL":"http://i1.download.fd.pchome.net/t_600x1024/g1/M00/12/1B/ooYBAFbNAs-IBOdnAAe3IZcQpCMAAC3qwIb9eQAB7c5418.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fwrr_z&e3Brvi54j_z&e3BgjpAzdH3Fowssrwrj6AzdH3F1jpwts_ldbn_z&e3Bip4s",            "fromURLHost":"app.pchome.net","currentIndex":"",            "width":600,            "height":375,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"166101821160",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                            <strong>海贼王<\/strong>图片大全电脑壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "107489692,45401",            "os" : "789431578,3019345532",            "simid" : "4204040326,643762010",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=866950884,3047965934&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=866950884,3047965934&fm=214&gp=0.jpg","FromURL":"http:\/\/power.baidu.com\/question\/541045619.html?qbl=relate_question_1"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=866950884,3047965934&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=866950884,3047965934&fm=26&gp=0.jpg",            "pageNum":18,            "objURL":"http://gss0.baidu.com/9vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/a71ea8d3fd1f4134beb3ba15241f95cad0c85ed0.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fr5oj6_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3Fc98a9cm8l_z&e3Bip4s?qks=6jswpj_q7jfpt5g_8",            "fromURLHost":"power.baidu.com","currentIndex":"",            "width":1440,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"139267989960",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"谁有这张
+                                                                                <strong>海贼王<\/strong>艾斯的高清大图 我的电脑屏幕的分辨率",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "866950884,3047965934",            "os" : "3374715332,3805193322",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3110099200,3513335820&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=3110099200,3513335820&fm=214&gp=0.jpg","FromURL":"http:\/\/power.baidu.com\/question\/1883989429113253748.html?entry=qb_browse_default"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3110099200,3513335820&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3110099200,3513335820&fm=26&gp=0.jpg",            "pageNum":19,            "objURL":"http://gss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/d058ccbf6c81800a3e013cc3b53533fa838b4712.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fr5oj6_z&e3Bkwt17_z&e3Bv54AzdH3Fq7jfpt5gAzdH3F8bbnlbl9dl88ndcn09b_z&e3Bip4s?jgp6y=qk_k65ofj_1juw7sp",            "fromURLHost":"power.baidu.com","currentIndex":"",            "width":540,            "height":480,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"103332726750",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"求
+                                                                                    <strong>海贼王<\/strong>的qq头像",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3110099200,3513335820",            "os" : "965015371,593919167",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064940575,1413176716&fm=11&gp=0.jpg","adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3064940575,1413176716&fm=11&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"",            "pageNum":20,            "objURL":"http://spider.nosdn.127.net/55f8ef8239633830eed44e29b2f9e1c6.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3F1y_z&e3B8mn_z&e3Bv54AzdH3FedAzdH3Fw6ptvsjAzdH3F1jpwtsAzdH3FDSI00bHMac8cWCMK_z&e3Bip4s",            "fromURLHost":"dy.163.com","currentIndex":"",            "width":640,            "height":581,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"11",            "di":"47312498230",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                        <strong>海贼王<\/strong>:大将黄猿速度很快?这4位速度不在他之下,2个可",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3064940575,1413176716",            "os" : "2021532731,3581047454",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1180165376,1360651726&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=1180165376,1360651726&fm=214&gp=0.jpg","FromURL":"http:\/\/www.nipic.com\/show\/12334716.html"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1180165376,1360651726&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1180165376,1360651726&fm=26&gp=0.jpg",            "pageNum":21,            "objURL":"http://pic65.nipic.com/file/20150426/20819484_140654389535_2.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bgtrtv_z&e3Bv54AzdH3Ffi5oAzdH3F8dnn908m_z&e3Bip4s",            "fromURLHost":"www.nipic.com","currentIndex":"",            "width":576,            "height":1024,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"34473984930",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                            <strong>海贼王<\/strong>图片",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1180165376,1360651726",            "os" : "2696846894,2170088808",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3444287355,3634750599&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=3444287355,3634750599&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/people\/mblog\/157113652\/detail\/"},{"ObjURL":"http:\/\/img4q.duitang.com\/uploads\/item\/201209\/27\/20120927091917_ycfjc.jpeg","FromURL":"http:\/\/m.duitang.com\/people\/mblog\/157113652\/detail\/"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3444287355,3634750599&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3444287355,3634750599&fm=26&gp=0.jpg",            "pageNum":22,            "objURL":"http://b-ssl.duitang.com/uploads/item/201209/27/20120927091917_ycFjC.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=90ac0cn0",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":1021,            "height":766,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"4916078970",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                                <strong>海贼王<\/strong> ",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "3444287355,3634750599",            "os" : "344921755,965901323",            "simid" : "3326140774,316984894",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2233828849,3392714258&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=2233828849,3392714258&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=633994036"},{"ObjURL":"http:\/\/img4q.duitang.com\/uploads\/item\/201506\/17\/20150617145448_gernd.jpeg","FromURL":"http:\/\/www.duitang.com\/people\/mblog\/385127104\/detail\/"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2233828849,3392714258&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2233828849,3392714258&fm=26&gp=0.jpg",            "pageNum":23,            "objURL":"http://images.ali213.net/picfile/pic/2013/04/09/927_hzw%20%2817%29.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Frtv_z&e3Bwstd8n_z&e3BgjpAzdH3Fip4sAzdH3Fda8n-a9-alAzdH3F8dm0c_80_z&e3Bip4s",            "fromURLHost":"pic.ali213.net","currentIndex":"",            "width":927,            "height":579,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"142766674600",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"《
+                                                                                                    <strong>海贼王<\/strong>》主题动漫高清壁纸",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2233828849,3392714258",            "os" : "2447982902,2846046698",            "simid" : "3464662489,413364385",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1697240438,1194041794&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img3.imgtn.bdimg.com\/it\/u=1697240438,1194041794&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/people\/mblog\/52958403\/detail\/"},{"ObjURL":"http:\/\/img4.duitang.com\/uploads\/item\/201209\/17\/20120917233932_3ckne.thumb.700_0.jpeg","FromURL":"http:\/\/m.duitang.com\/people\/mblog\/47027493\/detail\/"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1697240438,1194041794&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1697240438,1194041794&fm=26&gp=0.jpg",            "pageNum":24,            "objURL":"http://img4.duitang.com/uploads/item/201209/17/20120917233932_3CKNe.thumb.700_0.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Frj5rsjAzdH3F4ks52AzdH3Fcdlcb9anAzdH3F1jpwtsAzdH3F?r6j=cdcban80",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":700,            "height":1050,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"5634044460",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                                        <strong>海贼王<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "1697240438,1194041794",            "os" : "1851449532,539842711",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=989461950,1655471390&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=989461950,1655471390&fm=214&gp=0.jpg","FromURL":"http:\/\/k.sina.com.cn\/article_6429039113_17f335a090010046bb.html?from=animation"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=989461950,1655471390&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=989461950,1655471390&fm=26&gp=0.jpg",            "pageNum":25,            "objURL":"http://n.sinaimg.cn/sinacn/w1080h675/20180210/1893-fyrkuxt1410997.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fh_z&e3Bftgw_z&e3Bv54_z&e3BvgAzdH3Fw6ptvsj_m9dlanl88n_80unncwalaa8aa9mkk_z&e3Bip4s?u654=wgt4wpt5g",            "fromURLHost":"k.sina.com.cn","currentIndex":"",            "width":1080,            "height":675,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"25922698560",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"如果在
+                                                                                                            <strong>海贼王<\/strong>里面找男友,那么这几个一定能够俘获女生",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "989461950,1655471390",            "os" : "652006885,3792658086",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=973841891,1246396685&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img1.imgtn.bdimg.com\/it\/u=973841891,1246396685&fm=214&gp=0.jpg","FromURL":"http:\/\/photo.blog.sina.com.cn\/photo\/2754665051\/a430da5bhc291ea197108"},{"ObjURL":"http:\/\/imgsrc.baidu.com\/forum\/w=580\/sign=6fe15cd49ccad1c8d0bbfc2f4f3f67c4\/4fc5d403738da97766bdcad0b951f8198718e314.jpg","FromURL":"http:\/\/tiebac.baidu.com\/p\/5023748639?pid=105221408578&see_lz=1"}],"adType":"0","middleURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=973841891,1246396685&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=973841891,1246396685&fm=26&gp=0.jpg",            "pageNum":26,            "objURL":"http://attimg.dospy.com/img/day_120223/20120223_09f356ad17e9fbcad5b6c36wuweo33oz.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fkkf_z&e3B15fry_z&e3Bv54AzdH3Fpi6jw1-8nlcc8ml-8-cad-8_z&e3Bip4s",            "fromURLHost":"bbs.dospy.com","currentIndex":"",            "width":1440,            "height":900,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"101414623200",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                                                <strong>海贼王<\/strong>02.jpg",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "973841891,1246396685",            "os" : "690755083,1677837009",            "simid" : "4234353976,688398518",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2464126835,2328873750&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img0.imgtn.bdimg.com\/it\/u=2464126835,2328873750&fm=214&gp=0.jpg","FromURL":"http:\/\/it.da-quan.net\/article.php?id=230629989"},{"ObjURL":"http:\/\/img.zcool.cn\/community\/01b5bd55d6c3a76ac7251df859624f.png@2o.jpg","FromURL":"http:\/\/www.zuowenzhai.com\/yao-337222804.html"}],"adType":"0","middleURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2464126835,2328873750&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2464126835,2328873750&fm=26&gp=0.jpg",            "pageNum":27,            "objURL":"http://img.zcool.cn/community/01b5bd55d6c3a76ac7251df859624f.png@2o.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bzv55s_z&e3Bv54_z&e3BvgAzdH3Fo56hAzdH3FZMTMxM32xODA=_z&e3Bip4s",            "fromURLHost":"www.zcool.com.cn","currentIndex":"",            "width":1352,            "height":985,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"70251465130",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"《
+                                                                                                                    <strong>海贼王<\/strong>》q版",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "2464126835,2328873750",            "os" : "82369869,814235051",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4282327519,1707292224&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img4.imgtn.bdimg.com\/it\/u=4282327519,1707292224&fm=214&gp=0.jpg","FromURL":"http:\/\/www.duitang.com\/blog\/?id=168478075"}],"adType":"0","middleURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4282327519,1707292224&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=4282327519,1707292224&fm=26&gp=0.jpg",            "pageNum":28,            "objURL":"http://b-ssl.duitang.com/uploads/item/201305/28/20130528191652_vaVew.thumb.700_0.jpeg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3B17tpwg2_z&e3Bv54AzdH3Fks52AzdH3F?t1=8mb90ba0c",            "fromURLHost":"www.duitang.com","currentIndex":"",            "width":700,            "height":463,            "type":"jpeg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"179060707430",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"【
+                                                                                                                        <strong>海贼王<\/strong>】",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "4282327519,1707292224",            "os" : "1647051239,4126395830",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{"thumbURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=728944602,1781134454&fm=26&gp=0.jpg","replaceUrl": [{"ObjURL":"http:\/\/img2.imgtn.bdimg.com\/it\/u=728944602,1781134454&fm=214&gp=0.jpg","FromURL":"http:\/\/www.photophoto.cn\/pic\/22860581.html"}],"adType":"0","middleURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=728944602,1781134454&fm=26&gp=0.jpg",            "largeTnImageUrl":"",            "hasLarge" :0,            "hoverURL":"https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=728944602,1781134454&fm=26&gp=0.jpg",            "pageNum":29,            "objURL":"http://pic40.photophoto.cn/20160726/0005018340851268_b.jpg",            "fromURL":"ippr_z2C$qAzdH3FAzdH3Fooo_z&e3Bri5p5ri5p5_z&e3BvgAzdH3FrtvAzdH3Fddbmacb8_z&e3Bip4s",            "fromURLHost":"www.photophoto.cn","currentIndex":"",            "width":1024,            "height":539,            "type":"jpg",            "is_gif":0,            "filesize":"",            "bdSrcType":"0",            "di":"158626768080",            "is":"0,0",            "partnerId":0,            "bdSetImgNum":0,            "spn":0,            "bdImgnewsDate":"1970-01-01 08:00",            "fromPageTitle":"
+                                                                                                                            <strong>海贼王<\/strong>",            "bdSourceName":"",            "bdFromPageTitlePrefix":"",            "isAspDianjing":0,"token":"",            "imgType" : "",            "adid":"0",            "pi":"0",            "cs" : "728944602,1781134454",            "os" : "1471789338,3107420618",            "simid" : "0,0",            "source_type":"",            "personalized":"0",            "base64": '',            "adPicId": "0"        },{}]}
+);
+    app.setData('fcadData', {"fcData":[{"type":"FCAD","cellClass":"fc-default","timeSign":"119","posType":70010,"pageNum":0,"thumbURL":"https:\/\/f11.baidu.com\/it\/u=62466529,3197984907&fm=72","middleURL":"https:\/\/f11.baidu.com\/it\/u=62466529,3197984907&fm=72","largeTnImageUrl":"https:\/\/f11.baidu.com\/it\/u=62466529,3197984907&fm=72","hoverURL":"https:\/\/f11.baidu.com\/it\/u=62466529,3197984907&fm=72","matchURL":"https:\/\/f11.baidu.com\/it\/u=62466529,3197984907&fm=72","picId":"0","fromURLHost":"www.jd.com","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0MJZzeYTvAi0sTgtJhE_Kog5KXrZnJ53KvNYCAbg491EvR9zfFFM02pswTY-mNs2V_mBmWekHzfOwN50HztMCoTbqboT1IUaadkgM5RE-hM9O3c1NHpE9hBNfKePj_4c2bROataGnU7gwwHiL5Hkb6AnQg4SCMgCeq0.7R_NR2Ar5Od66sw5I7M9CE9exQQTBaPrMLek8sHfGmEukmntpyuCp88aFeCEETkblTMWYS5ZIblkECFSq17erQKA-hpAo-LU8PIIhHWELeSVK17Na9WstxU9zxgjbSolaI5--8w9zxy8EkvNSrOF1REY_lbvTN9h9mlThO_v20.U1Yk0ZDq8J5RqnLd0ZKGm1Yk0Zfq8ovlCtLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5HD0uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqn1mkPjm4njfznjckPHTLn1bvP0Kzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqPjR1nHn","width":636,"iwidth":636,"height":415,"iheight":415,"fromPageTitle":"\u7cbe\u54c1\u300a\u56fe\u4e66\u300b\u6298\u6263\u591a,\u949f\u7231\u539f\u7248\u53ca\u65f6\u8fbe!","fromPageAbs":"\u4eac\u4e1c\u539f\u7248\u300a\u56fe\u4e66\u300b\u949c\u60e0\u60ca\u559c,\u5343\u4e07\u597d\u4e66\u5728\u7ebf\u70ed\u9500!\u8eab\u5904\u95f9\u4e8b,\u5fc3\u6000..","base64":"","adNativeUrl":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0MJZzeYTvAi0sTgtJhE_Kog5KXrZnJ53KvNYCAbg491EvR9zfFFM02pswTY-mNs2V_mBmWekHzfOwN50HztMCoTbqboT1IUaadkgM5RE-hM9O3c1NHpE9hBNfKePj_4c2bROataGnU7gwwHiL5Hkb6AnQg4SCMgCeq0.7R_NR2Ar5Od66sw5I7M9CE9exQQTBaPrMLek8sHfGmEukmntpyuCp88aFeCEETkblTMWYS5ZIblkECFSq17erQKA-hpAo-LU8PIIhHWELeSVK17Na9WstxU9zxgjbSolaI5--8w9zxy8EkvNSrOF1REY_lbvTN9h9mlThO_v20.U1Yk0ZDq8J5RqnLd0ZKGm1Yk0Zfq8ovlCtLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5HD0uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqn1mkPjm4njfznjckPHTLn1bvP0Kzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqPjR1nHn","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"{\"image_native\":{\"sell_point\":{\"tag\":\"\"}}}\n","adSellPointTag":"\u4ef7\u683c\u5408\u7406"},{"type":"FCAD","cellClass":"fc-default","timeSign":"119","posType":70010,"pageNum":1,"thumbURL":"https:\/\/f10.baidu.com\/it\/u=1702154046,3138678857&fm=72","middleURL":"https:\/\/f10.baidu.com\/it\/u=1702154046,3138678857&fm=72","largeTnImageUrl":"https:\/\/f10.baidu.com\/it\/u=1702154046,3138678857&fm=72","hoverURL":"https:\/\/f10.baidu.com\/it\/u=1702154046,3138678857&fm=72","matchURL":"https:\/\/f10.baidu.com\/it\/u=1702154046,3138678857&fm=72","picId":"0","fromURLHost":"hao.ycitys.com.cn","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0MVV3_WJmn9Q95UWUYpSOo_92IoXX0BGlKTpcsv8F-S6nXdov62TAVtg7oIjQYx4SGLYVRa8PWsNCrK-R59n1u0t6wBh3roc8e2cM-n3KUAZnBexDB1Y8seo7p10mx0wzJJZagOf4lUlXm0vXU35hMwWrrMhydQa0I0.Db_iNn8tVDQlABrhjNKNst7qajW86LedQqQrGPM7muCyPLW342d0.U1Yz0ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqPjcvn1nvPH63nj0vPjDLnWTznsKzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqPHD4","width":1440,"iwidth":1440,"height":900,"iheight":900,"fromPageTitle":"\u65b0\u7248-\u6d77\u8d3c\u516c\u76ca\u670d,\u9996\u670d\u5f00\u542f \u767e\u8fd4 \u9001VIP ..","fromPageAbs":"\u6d77\u8d3c\u516c\u76ca\u670d,\u767e\u8fd4,BT\u7279\u6743,\u9001VIP,\u9001\u65e0\u9650\u5143\u5b9d,\u9001\u9996\u5145,\u805a\u96c6\u516c\u76caF..","base64":"","adNativeUrl":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0MVV3_WJmn9Q95UWUYpSOo_92IoXX0BGlKTpcsv8F-S6nXdov62TAVtg7oIjQYx4SGLYVRa8PWsNCrK-R59n1u0t6wBh3roc8e2cM-n3KUAZnBexDB1Y8seo7p10mx0wzJJZagOf4lUlXm0vXU35hMwWrrMhydQa0I0.Db_iNn8tVDQlABrhjNKNst7qajW86LedQqQrGPM7muCyPLW342d0.U1Yz0ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqPjcvn1nvPH63nj0vPjDLnWTznsKzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqPHD4","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"{\"image_native\":{\"sell_point\":{\"tag\":\"\"}}}\n","adSellPointTag":"\u7545\u9500\u4ea7\u54c1"},{"type":"FCAD","cellClass":"fc-default","timeSign":"119","posType":70010,"pageNum":2,"thumbURL":"https:\/\/f10.baidu.com\/it\/u=2166654833,3180937429&fm=72","middleURL":"https:\/\/f10.baidu.com\/it\/u=2166654833,3180937429&fm=72","largeTnImageUrl":"https:\/\/f10.baidu.com\/it\/u=2166654833,3180937429&fm=72","hoverURL":"https:\/\/f10.baidu.com\/it\/u=2166654833,3180937429&fm=72","matchURL":"https:\/\/f10.baidu.com\/it\/u=2166654833,3180937429&fm=72","picId":"0","fromURLHost":"ye.aucheng.com.cn","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0M8fk-yiz5M5LrAftb3rhCdxCAXusahz70Jg6PauDYIAWf5NQV5f46SaKqC1uWY-kYv4uxbnHRiYMjODUJIgFoByxGYfdk96QIfx1MGm9uISjbWdc3R_QxRO0mxTF4mDFShDFavt_hWMhas_qjjws5DJ-c-zN-E4Ux0.Db_ipDSHraAGrphjNKNst7qajW86o_oREY_lbvTN9h9mtIMW_R0.U1Y10ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqn1RsP1fsrjfzrH01PW0sP1DvnfKzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KEm1Yk0APzm1Y1PWfkP6","width":1024,"iwidth":1024,"height":727,"iheight":727,"fromPageTitle":"BT\u6d77\u8d3c\u516c\u76ca\u670d,\u9996\u670d\u5f00\u542f \u767e\u8fd4 \u9001VIP \u65e0..","fromPageAbs":"\u6d77\u8d3c\u516c\u76ca\u670d,\u767e\u8fd4,BT\u7279\u6743,\u9001VIP,\u9001\u65e0\u9650\u5143\u5b9d,\u9001\u9996\u5145,\u805a\u96c6\u516c\u76ca..","base64":"","adNativeUrl":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0M8fk-yiz5M5LrAftb3rhCdxCAXusahz70Jg6PauDYIAWf5NQV5f46SaKqC1uWY-kYv4uxbnHRiYMjODUJIgFoByxGYfdk96QIfx1MGm9uISjbWdc3R_QxRO0mxTF4mDFShDFavt_hWMhas_qjjws5DJ-c-zN-E4Ux0.Db_ipDSHraAGrphjNKNst7qajW86o_oREY_lbvTN9h9mtIMW_R0.U1Y10ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqn1RsP1fsrjfzrH01PW0sP1DvnfKzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KEm1Yk0APzm1Y1PWfkP6","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"{\"image_native\":{\"sell_point\":{\"tag\":\"\"}}}\n","adSellPointTag":"\u6bcf\u65e5\u63a8\u8350"},{"type":"FCAD","cellClass":"fc-default","timeSign":"119","posType":70010,"pageNum":3,"thumbURL":"https:\/\/f10.baidu.com\/it\/u=1726574660,189006746&fm=72","middleURL":"https:\/\/f10.baidu.com\/it\/u=1726574660,189006746&fm=72","largeTnImageUrl":"https:\/\/f10.baidu.com\/it\/u=1726574660,189006746&fm=72","hoverURL":"https:\/\/f10.baidu.com\/it\/u=1726574660,189006746&fm=72","matchURL":"https:\/\/f10.baidu.com\/it\/u=1726574660,189006746&fm=72","picId":"0","fromURLHost":"937.qwpeo.com","bdImgnewsDate":"1000","fromURL":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0M-qk4hvpezchYwe9mZ_2l1gBoFLsp5wZnVz5wFyBbwOsDhv3jSfoO0w-zD2s5I2HBTw0BMZwdtx8ugj6KTqGWPMkAcZblDhtX8SG9ImneNvRjYyI_zccmtLDNLhPDeB_l77KLq5ODSJlCZtdPR2k9YDlbQ_PrpmBi0.7R_iUS5W4X16kGTBjZwuYfNT5KKkLfTxAKiOi1JHukyAp7B81WE3J0.U1YY0ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqPWn3nW6LrHcLPW6dnj6vPWcsn6Kzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqn10sPWb","width":389,"iwidth":389,"height":220,"iheight":220,"fromPageTitle":"\u6d77\u8d3c\u306e\u738b\u516c\u76ca\u670d_\u6d77\u8d3cBT\u9875\u6e38_\u9001\u5143\u5b9d\u9001VI..","fromPageAbs":"\u6d77\u8d3c\u306e\u738b\u516c\u76ca\u670d\u9875\u6e38,BT\u7279\u6743,\u9001VIP,\u9001\u5143\u5b9d,\u9001\u9996\u5145,\u805a\u96c6\u516c\u76ca\u7a00..","base64":"","adNativeUrl":"http:\/\/www.baidu.com\/baidu.php?url=060000jZYuibWkd0M-qk4hvpezchYwe9mZ_2l1gBoFLsp5wZnVz5wFyBbwOsDhv3jSfoO0w-zD2s5I2HBTw0BMZwdtx8ugj6KTqGWPMkAcZblDhtX8SG9ImneNvRjYyI_zccmtLDNLhPDeB_l77KLq5ODSJlCZtdPR2k9YDlbQ_PrpmBi0.7R_iUS5W4X16kGTBjZwuYfNT5KKkLfTxAKiOi1JHukyAp7B81WE3J0.U1YY0ZDq8J5RqnLd0ZKGm1Yk0Zfq8J5RqnLd0A-V5HnvPsKM5gK1UMn0Iybq0ZKGujYY0APGujY4nsKVIjY1nj64g1csrjb0pvbqnfKzIjYdnHc0uy-b5fKBpHYznjwxn10z0AdW5HKxn0KkTA-b5H00TyPGujYs0ZFMIA7M5H00Uy-b5H00pg7Y5H00mycqn7ts0ANzu1Ys0ZKs5H00UMus5H08nj0snj0snj00Ugws5H00uAwETjYs0ZFJ5H00uMfqn0KspjYs0Aq15H00mMTqn0K8IjYs0ZPl5fKYIgnqPWn3nW6LrHcLPW6dnj6vPWcsn6Kzug7Y5HDdPjDLn1Ddrjb4njc0Tv-b5H-WuWcLmyfkPHbsnH7-nAn0mLPV5H-7wWmYfYwDrHnkPjD4nWf0mynqnfKsUWYs0Z7VIjYs0Z7VT1Ys0ZGY5H00UyPxuMFEUHYsg100uA78IyF-gLK_my4GuZnqn7ts0ZK9I7qhUA7M5H00uAPGujYs0ANYpyfqQHD0mgPsmvnqn0KdTA-8mvnqn0KkUymqn0KhmLNY5H00uMGC5H00uh7Y5H00XMK_Ignqn0K9uAu_myTqnfK_uhnqn0KWThnqn10sPWb","adTag":"","adFlag":0,"adShortSummary":"","adStylesReserve":"{\"image_native\":{\"sell_point\":{\"tag\":\"\"}}}\n","adSellPointTag":"\u597d\u8bc4\u5982\u6f6e"}],"fcMidData":[],"fcBtData":[],"fcType":"2","adType":1,"fcAdDatasLen":"4"}
+);
+    app.setData('xgMidData', {"xgMidData":[],"xgMidDataLen":"0"});
+    app.setData('rpData', {"data": []});
+    app.setData('shootBannerData', window.shootBannerData);
+    app.setData('browserRsData', {    "Status" : "0",    "query" : "",    "desc" : "",    "id" : "",    "photos" :[]}
+);
+    app.setData('rsQuery', [["海贼王 壁纸", "%BA%A3%D4%F4%CD%F5%20%B1%DA%D6%BD", "0", "0"],["海贼王吧", "%BA%A3%D4%F4%CD%F5%B0%C9", "0", "0"],["海贼王 索隆", "%BA%A3%D4%F4%CD%F5%20%CB%F7%C2%A1", "0", "0"],["海贼王 头像", "%BA%A3%D4%F4%CD%F5%20%CD%B7%CF%F1", "0", "0"],["海贼王图片 索隆", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%20%CB%F7%C2%A1", "0", "0"],["海贼王图片 路飞", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%20%C2%B7%B7%C9", "0", "0"],["海贼王壁纸高清大图", "%BA%A3%D4%F4%CD%F5%B1%DA%D6%BD%B8%DF%C7%E5%B4%F3%CD%BC", "0", "0"],["海贼王图片 壁纸", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%20%B1%DA%D6%BD", "0", "0"],["海贼王 电脑桌面", "%BA%A3%D4%F4%CD%F5%20%B5%E7%C4%D4%D7%C0%C3%E6", "0", "0"],["海贼王艾斯", "%BA%A3%D4%F4%CD%F5%B0%AC%CB%B9", "0", "0"],["海贼王壁纸 竖屏", "%BA%A3%D4%F4%CD%F5%B1%DA%D6%BD%20%CA%FA%C6%C1", "0", "0"],["海贼王漫画", "%BA%A3%D4%F4%CD%F5%C2%FE%BB%AD", "0", "0"],["海贼王高清壁纸", "%BA%A3%D4%F4%CD%F5%B8%DF%C7%E5%B1%DA%D6%BD", "0", "0"],["海贼王图片 头像", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%20%CD%B7%CF%F1", "0", "0"],["海贼王乔巴", "%BA%A3%D4%F4%CD%F5%C7%C7%B0%CD", "0", "0"],["海贼王手机壁纸", "%BA%A3%D4%F4%CD%F5%CA%D6%BB%FA%B1%DA%D6%BD", "0", "0"],["海贼王904", "%BA%A3%D4%F4%CD%F5904", "0", "0"],["海贼王图片大全", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%B4%F3%C8%AB", "0", "0"],["海贼王图片高清", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%B8%DF%C7%E5", "0", "0"],["海贼王图片 艾斯", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC%20%B0%AC%CB%B9", "0", "0"],["海贼王罗", "%BA%A3%D4%F4%CD%F5%C2%DE", "0", "0"],["海贼王简笔画", "%BA%A3%D4%F4%CD%F5%BC%F2%B1%CA%BB%AD", "0", "0"],["海贼王山治", "%BA%A3%D4%F4%CD%F5%C9%BD%D6%CE", "0", "0"],["海贼王索隆", "%BA%A3%D4%F4%CD%F5%CB%F7%C2%A1", "0", "0"],["鼠绘海贼王", "%CA%F3%BB%E6%BA%A3%D4%F4%CD%F5", "0", "0"],["海贼王人物", "%BA%A3%D4%F4%CD%F5%C8%CB%CE%EF", "0", "0"],["海贼王照片", "%BA%A3%D4%F4%CD%F5%D5%D5%C6%AC", "0", "0"],["海贼王图片", "%BA%A3%D4%F4%CD%F5%CD%BC%C6%AC", "0", "0"],["海贼王壁纸", "%BA%A3%D4%F4%CD%F5%B1%DA%D6%BD", "0", "0"],["海贼王头像", "%BA%A3%D4%F4%CD%F5%CD%B7%CF%F1", "0", "0"]]);
+    app.setData('hotWords', [{            "query": "重庆4.8级地震",            "flag": "重庆4.8级地震",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%87%8D%E5%BA%864.8%E7%BA%A7%E5%9C%B0%E9%9C%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "内蒙古现罕见日柱",            "flag": "内蒙古现罕见日柱",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%86%85%E8%92%99%E5%8F%A4%E7%8E%B0%E7%BD%95%E8%A7%81%E6%97%A5%E6%9F%B1",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "女歌手本兮22岁逝世",            "flag": "女歌手本兮22岁逝世",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E5%A5%B3%E6%AD%8C%E6%89%8B%E6%9C%AC%E5%85%AE22%E5%B2%81%E9%80%9D%E4%B8%96",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "蒋劲夫托举佟丽娅",            "flag": "蒋劲夫托举佟丽娅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E8%92%8B%E5%8A%B2%E5%A4%AB%E6%89%98%E4%B8%BE%E4%BD%9F%E4%B8%BD%E5%A8%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "打工钱被咬成碎片",            "flag": "打工钱被咬成碎片",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%89%93%E5%B7%A5%E9%92%B1%E8%A2%AB%E5%92%AC%E6%88%90%E7%A2%8E%E7%89%87",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "村民发现奇石似飞碟",            "flag": "村民发现奇石似飞碟",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%9D%91%E6%B0%91%E5%8F%91%E7%8E%B0%E5%A5%87%E7%9F%B3%E4%BC%BC%E9%A3%9E%E7%A2%9F",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "环卫夫妻身高不足一米四",            "flag": "环卫夫妻身高不足一米四",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E7%8E%AF%E5%8D%AB%E5%A4%AB%E5%A6%BB%E8%BA%AB%E9%AB%98%E4%B8%8D%E8%B6%B3%E4%B8%80%E7%B1%B3%E5%9B%9B",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "沙滩现巨大黑色怪物",            "flag": "沙滩现巨大黑色怪物",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E6%B2%99%E6%BB%A9%E7%8E%B0%E5%B7%A8%E5%A4%A7%E9%BB%91%E8%89%B2%E6%80%AA%E7%89%A9",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "黄子韬搂何炅",            "flag": "黄子韬搂何炅",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=%E9%BB%84%E5%AD%90%E9%9F%AC%E6%90%82%E4%BD%95%E7%82%85",            "hot": "0",            "fromurl": "",            "photos": []        },{            "query": "2016nba圣诞大战",            "flag": "2016nba圣诞大战",            "url": "http:\/\/image.baidu.com\/search\/index?tn=baiduimage&ipn=r&ct=201326592&cl=2&lm=-1&st=-1&fm=result&fr=sugrec&sf=1&fmq=1452955267929_R&pv=&ic=0&nc=1&z=&se=1&showtab=0&fb=0&width=&height=&face=0&istype=2&ie=utf-8&word=2016nba%E5%9C%A3%E8%AF%9E%E5%A4%A7%E6%88%98",            "hot": "0",            "fromurl": "",            "photos": []        }]);
+
+    
+        app.init();
+    app.run();
+});
+}();
+!function(){    window.tn = 'result';
+    window.vsid = '7451bfe07c3716be6cb325cde817cca36493f282';
+    if ('index' === window.tn
+        || 'result' === window.tn
+        || 'detail' === window.tn) {
+        var sttb = document.getElementById('sttb');
+        sttb.removeAttribute && sttb.removeAttribute('title');
+    }
+    /**
+     * 统计代码
+    **/
+    window.ss = function(){
+        var URL = '//imgstat.baidu.com/9.gif?rainbow=1&';
+        function request(url){
+            var seed = Math.random();
+            var img = window[seed] = new Image;
+            img.onload = img.onerror = function(){
+                window[seed] = null;
+                img.onload = img.onerror = null;
+                img = null;
+            };
+            img.src = url;
+        }
+
+        /* p = 0, 首页八张demo图片点击统计
+         * p = 1, 结果页tab相关： name=stu相同tab显示；name=face 人脸搜索tab显示; type=show展现；type=click点击
+         * p = pv, 结果页PV统计：data=1，有结果；data=0无结果；data=-1，down页面
+         **/
+
+        return function(arg, url, e){
+            var s = URL + json2Query(arg) + '&' + Math.random();
+            request(s);
+            if(url){
+                setTimeout(function(){
+                    location.href = url;
+                }, 300);
+                e = e || window.event;
+                if(e){
+                    if(e.preventDefault){
+                        e.preventDefault();
+                    }else{
+                        e.returnValue = false;
+                    }
+                }
+
+            }
+        };
+
+    }();
+    window.__originTitle = document.title;
+    function json2Query(json){
+        if(json == null || typeof json != 'object') return json;
+        var query = [];
+        for(var i in json){
+            if(i != '')
+                query[query.length] = i + '=' + json[i];
+        }
+        return query.join('&');
+    }
+
+    require.async(["common:widget/ui/base/base","common:widget/shitu/run"],function($, shitu){
+        window.$ = $;
+        $(document).ready(function() {
+            var st = new shitu();
+            st.init();
+            window.stInstance = st;
+        });
+    });
+}();
+!function(){require.async(["searchresult:widget/searchBox/imgFilter/init"],function(filter){
+	filter.init();
+})
+
+
+}();
+!function(){    if (window.hotspotData) {
+        require.async(['searchresult:widget/pagelets/base/timeliness/init'], function (Timeliness) {
+            new Timeliness().init(window.hotspotData);
+        });
+    }
+}();
+!function(){/**
+* isRefresh 用来判断禁止se或查询的参数是否生效,false表示无须清零，true表示需要清零
+*/
+require.async(["common:widget/ui/base/base","searchresult:widget/ui/utils/utils","common:widget/ui/historyRecord/historyRecord"],function( $, utils, HistoryRecord){
+
+    window.s_submit = function(form,isRefresh){
+
+
+//图片url检索跳转
+var keyword = form.word.value;
+
+if ($.trim(keyword).length > 0) {
+    var historyRecord = new HistoryRecord({historyKey: 'indexPageSugList'});
+    historyRecord.setRecord(keyword);
+    $.cookie.set('cleanHistoryStatus', 0, {path: '/'});
+}
+
+
+var tiaoma = /^[\s]*http[s]*\:\/\/[\s\S]*\.[jpg|gif|png|bmp|jpeg]*[\s]*$/.test(keyword) ||/img5\.imgtn\.bdimg\.com/.test(keyword) || /mt1\.baidu\.com\/timg/.test(keyword);
+var ajaxURL = 'https://graph.baidu.com/upload?image=' + encodeURIComponent(keyword) + '&range=imagePage&tn=pc&from=pc&image_source=PC_UPLOAD_IMAGE_ICONURL&extUiData%5bisLogoShow%5d=1';
+var isIE6789 = $.browser.msie && ($.browser.version <= 9);
+
+        if (tiaoma && !isIE6789) {
+            // speed
+            $.cookie('uploadTime', new Date().getTime(), {path: '/'});
+
+            $.ajax({
+                url: ajaxURL,
+                type: 'post',
+                success: function (response) {
+                    if (response.status === 0) {
+                        location.href = response.data.url;
+                    } else if (response.status === 1002) {
+                        alert('未找到该图片的详细信息，请上传其他图片');
+                    } else {
+                        alert('出错了！（规则未定）');
+                    }
+                },
+                error: function () {
+                    alert('网络问题，请稍候再试！');
+                }
+            });
+           return false;
+        }
+
+
+        var searchConf = utils.query2Json(utils.escapeXSS(window.location.search.substring(1)));
+        if(typeof searchConf.fm == "undefined"){searchConf.fm = '';}
+        if(typeof searchConf.fmq == "undefined"){searchConf.fmq = '';}
+        if(utils.trim(searchConf.queryWord) == form.word.value){
+            form.fmq.value = utils.fmqValueSet();
+        }else{
+            var fmqDate = new Date();
+            var T = fmqDate.getTime();
+            if(searchConf.fmq.indexOf('m') > -1 && searchConf.fmq.indexOf('_m') == -1 && searchConf.fmq.indexOf('_R') == -1){
+                var fmqvalue = searchConf.fmq;
+                form.fmq.value = T + '_' +fmqvalue + '_R';
+            }else{
+                form.fmq.value =  T + '_R';
+            }
+
+        }
+        var isflip = $('body').hasClass('flip');
+        form.tn.value = "baiduimage";
+
+        form.ct.value = "201326592";
+        form.cl.value = "2";
+        form.lm.value = "-1";
+        form.pv.value = "";
+        form.action = "/search/index";
+        if (window.canUseHttps) {
+            form.action = 'https://' + window.location.host + '/search/index';
+        }
+
+        if(isflip) {
+            form.action = "/search/flip";
+        }
+        if(isRefresh == true){
+            // submit直接提交新query
+            form.se.value = "1";
+        }else{
+            var showtab =  parseInt(searchConf.showtab);
+            if(!isNaN(showtab)&&showtab>0){
+                form.showtab.value = showtab;
+            }
+        }
+        form.ctd.value = (+new Date()) + "^00_" + $(window).width() + "X" +  window.innerHeight;
+
+        return true;
+    }
+})
+
+}();
+!function(){
+		window.bid = 36;
+
+	if(!window.passport){
+	    var script = document.createElement("script");
+	    script.src = '//passport.baidu.com/passApi/js/uni_login_wrapper.js?cdnversion=' + (new Date).getTime();
+	    document.body.appendChild(script);
+	}
+	require.async(["common:widget/loginbar/loginbar"],function(loginbar){
+
+	    loginbar.init();        
+
+	});
+
+
+}();
+!function(){    require.async(['searchresult:widget/pagelets/base/backTop/init']);
+
+    require.async(['common:widget/ui/feedback/feedback'], function (feedback) {
+        var callbacks = {};
+        feedback.init(callbacks);
+    });
+}();
+!function(){            
+        require.async(['common:widget/ui/sourcehttps/sourcehttps'], function(init){
+            init({
+                tn: 'baiduimage',
+                word: '%E6%B5%B7%E8%B4%BC%E7%8E%8B',
+                sample: 100 - 0
+            });
+        });
+        var img = new Image();
+        img.src = 'https://timgsa.baidu.com/timg?image&quality=80&size=b10000_10000&sec=1467190779130&di=ba3e0f927cfa5852f26f805954882af7&imgtype=png&src=http%3A%2F%2Fimg1.bdstatic.com%2Fstatic%2Fcommon%2Fwidget%2Fshitu%2Fimages%2Fcamera_b659d28.png';
+    
+    }();
+!function(){    require.async(['common:widget/ui/monitorRequest/monitorRequest'],function(monitorRequest){
+	var userid = "";
+	var q = "%E6%B5%B7%E8%B4%BC%E7%8E%8B";
+	var tn = "result";
+	var host = "//imgstat.baidu.com/4.gif";
+	var hostSweb = "//image.baidu.com/pv/pv2.gif";
+    var rsw = "";
+    if(location.href !== document.referrer && document.referrer != ""){
+        rsw = "&rs=";
+    }
+    else{
+        rsw = '';
+    }
+    var samplekey = window.samplekey || '';
+    var img = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    monitorRequest( host + "?logid=11309236653840735756&ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=result.page&fr=" + rsw);
+    var imgSweb = window["__log__" + (new Date()).getTime()*Math.random()] = document.createElement('img');
+    imgSweb.src = hostSweb + "?ie=utf-8&q="+ q +"&userid=" + userid + "&samplekey=" + encodeURIComponent(samplekey) + "&event_type=pv&tn=" + tn + "&tpl=&fr=" + rsw + '&' + new Date() * Math.random();
+    });
+}();
+!function(){    require.async(["common:widget/ui/fmCheck/fmCheck"],function(fmCheck){
+        fmCheck.init();
+    });
+}();
+!function(){require.async(['common:widget/ui/base/base'], function($) {
+    var userFrom = '';
+
+    var elem = document.createElement('a');
+    elem.href = document.referrer;
+    var hostname = elem['hostname'];
+    var urlfr = '';
+    var chenjin = '';
+    var urlword = '%E6%B5%B7%E8%B4%BC%E7%8E%8B';
+
+    if (hostname !== 'image.baidu.com') {
+        if (urlfr) {
+            userFrom += urlfr;
+            if (chenjin === '1') {
+                userFrom += 'chenjin1';
+            } else if (chenjin === '0') {
+                var wordList = ["%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8",
+                    "%E6%89%8B%E6%9C%BA%E5%A3%81%E7%BA%B8%E5%9B%BE%E7%89%87",
+                    "%E5%A4%B4%E5%83%8F",
+                    "%E5%A4%B4%E5%83%8F%E5%9B%BE%E7%89%87"];
+                if (wordList.indexOf(urlword) >= 0) {
+                    userFrom += 'chenjin0';
+                }
+            }
+        } else {
+            userFrom = hostname;
+        }
+    } else {
+        userFrom = $.cookie('userFrom') || '';
+    }
+
+    if (userFrom.length > 0) {
+        var date = new Date();
+        date.setTime(date.getTime() + (10 * 60 * 1000));
+        $.cookie('userFrom', userFrom, {path: '/', expires: date, domain: '.baidu.com'});
+    } else {
+        $.cookie('userFrom', null, {path: '/', domain: '.baidu.com'});
+    }
+});
+}();
+!function(){            require.async(["common:widget/ui/durationStat/durationStat"],function(durationStat){
+            durationStat.heartStart({
+                pageId: 2 - 0,
+                sid: 'a69997b411d01df3bf39171509b543c7af4a65c8',
+                cs: '',
+                word: '海贼王'
+            });
+        });
+    }();
+                                                                                                                            </script>
+                                                                                                                        </html>
+                                                                                                                        <!--27897874040693533450110910-->
+                                                                                                                        <script> var _trace_page_logid = 2789787404; </script>
