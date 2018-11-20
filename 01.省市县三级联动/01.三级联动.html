@@ -7,7 +7,7 @@
     <title>Document</title>
     <script src="./vue.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
+    <script type="text/javascript" src="./citys.js"></script>
 </head>
 <body>
     <div id="app">
@@ -44,16 +44,14 @@
         },
         methods: {
             loadData(){
-                axios.get('http://localhost:3000/citys')
-                .then((response)=>{
-                    // 获取到数据
-                    this.response = response.data;
-                    console.log(response);
-                    // 获取城市初始数据
-                    this.citys = this.response[0].city;
-                    // 根据初始城市获取初始区域
-                    this.areas = this.citys[0].area;
-                })
+                
+                // 获取到数据
+                this.response = response;
+                console.log(response);
+                // 获取城市初始数据
+                this.citys = this.response[0].city;
+                // 根据初始城市获取初始区域
+                this.areas = this.citys[0].area;
             }
         },
         created(){
